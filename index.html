@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Udit Photography | Romantic Wedding Photography & Films</title>
+    <meta name="description"
+        content="Udit Photography - Fine art wedding photography and cinematography capturing authentic love stories.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Cormorant for headings, Montserrat for body/caps, Great Vibes for script accents -->
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Great+Vibes&family=Montserrat:wght@200;300;400;500&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- GSAP CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+    <!-- Custom Scripts -->
+    <script src="main.js" defer></script>
+</head>
+
+<body>
+
+    <!-- Cinematic Loader -->
+    <div id="loader">
+        <div class="loader-content">
+            <h1 class="loader-title">Udit Photography</h1>
+            <p class="loader-subtitle script-accent">A Visual Legacy</p>
+        </div>
+        <div class="loader-overlay-left"></div>
+        <div class="loader-overlay-right"></div>
+    </div>
+
+    <!-- Classic Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <ul class="nav-links left-links">
+                <li><a href="#welcome">About</a></li>
+                <li><a href="#galleries">Portfolio</a></li>
+            </ul>
+            <a href="#" class="logo">UDIT PHOTOGRAPHY</a>
+            <ul class="nav-links right-links">
+                <li><a href="#experience">Films</a></li>
+                <li><a href="#contact">Inquire</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Classic Hero -->
+    <section id="home" class="hero-classic">
+        <div class="hero-bg">
+            <video autoplay muted loop playsinline>
+                <source src="https://videos.pexels.com/video-files/3195394/3195394-hd_1920_1080_25fps.mp4" type="video/mp4">
+            </video>
+            <div class="hero-overlay"></div>
+        </div>
+        
+        <div class="hero-content fade-up">
+            <p class="hero-kicker">Fine Art Wedding Photography</p>
+            <h1 class="hero-title">Capturing Your</h1>
+            <p class="script-accent hero-script">Love Story</p>
+            <a href="#galleries" class="btn btn-outline-white">View Portfolio</a>
+        </div>
+    </section>
+
+    <!-- The Warm Welcome (Classic Showit Style Layout) -->
+    <section id="welcome" class="welcome-section">
+        <div class="container">
+            <div class="welcome-grid">
+                <div class="welcome-image fade-up">
+                    <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=800&auto=format&fit=crop" alt="Udit Photography Team">
+                    <div class="image-frame"></div>
+                </div>
+                <div class="welcome-text fade-up">
+                    <p class="script-accent text-accent">Hello there</p>
+                    <h2>We Are Udit Photography</h2>
+                    <p>We believe in the beauty of genuine connection and the power of a single photograph to bring you back to the most precious moments of your life. Our approach is deeply rooted in fine art photography, meaning we focus on natural light, romantic compositions, and authentic joy.</p>
+                    <p>Based in the heart of the city but traveling worldwide, we are here to document your legacy with elegance and grace.</p>
+                    <div class="signature">Udit</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scroll Animated Marquee -->
+    <section class="marquee-section">
+        <div class="marquee-container">
+            <div class="marquee-content">
+                <span>Timeless Elegance &nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp; Authentic Emotion &nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp; Fine Art Cinema &nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp; Editorial Style &nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp; </span>
+                <span>Timeless Elegance &nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp; Authentic Emotion &nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp; Fine Art Cinema &nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp; Editorial Style &nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp; </span>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Details Section (Overlapping Elements) -->
+    <section class="the-details">
+        <div class="container">
+            <div class="details-header text-center fade-up">
+                <p class="script-accent text-accent">The Finer</p>
+                <h2>Details</h2>
+            </div>
+            <div class="details-grid">
+                <div class="details-item img-left fade-up">
+                    <img src="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=600&auto=format&fit=crop" alt="Wedding Rings">
+                </div>
+                <div class="details-item video-center fade-up">
+                    <video autoplay muted loop playsinline>
+                        <source src="https://videos.pexels.com/video-files/5801332/5801332-hd_1920_1080_25fps.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="details-item img-right fade-up">
+                    <img src="https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?q=80&w=600&auto=format&fit=crop" alt="Wedding Dress">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scroll-Scrubbed Experience Video -->
+    <section id="experience" class="experience-scrub-section">
+        <div class="experience-scrub-container">
+            <video id="experience-video" class="scrub-video" muted playsinline preload="auto">
+                <source src="https://videos.pexels.com/video-files/4011471/4011471-hd_1920_1080_30fps.mp4" type="video/mp4">
+            </video>
+            <div class="experience-overlay">
+                <p class="script-accent text-accent fade-up">The Experience</p>
+                <h2 class="fade-up">Cinematic Approach</h2>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Galleries -->
+    <section id="galleries" class="featured-galleries">
+        <div class="container">
+            <div class="section-title text-center fade-up">
+                <p class="kicker">Selected Works</p>
+                <h2>Featured Galleries</h2>
+            </div>
+            
+            <div class="galleries-grid">
+                <a href="#" class="gallery-card fade-up">
+                    <div class="gallery-img">
+                        <img src="https://images.unsplash.com/photo-1606800052052-a08af7148866?q=80&w=800&auto=format&fit=crop" alt="Weddings">
+                    </div>
+                    <div class="gallery-info">
+                        <p class="script-accent">01</p>
+                        <h3>Weddings</h3>
+                        <span class="explore-link">Explore</span>
+                    </div>
+                </a>
+                
+                <a href="#" class="gallery-card fade-up" style="margin-top: 50px;">
+                    <div class="gallery-img">
+                        <img src="https://images.unsplash.com/photo-1543616991-75a2c12516bb?q=80&w=800&auto=format&fit=crop" alt="Engagements">
+                    </div>
+                    <div class="gallery-info">
+                        <p class="script-accent">02</p>
+                        <h3>Engagements</h3>
+                        <span class="explore-link">Explore</span>
+                    </div>
+                </a>
+                
+                <a href="#" class="gallery-card fade-up">
+                    <div class="gallery-img">
+                        <img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?q=80&w=800&auto=format&fit=crop" alt="Editorials">
+                    </div>
+                    <div class="gallery-info">
+                        <p class="script-accent">03</p>
+                        <h3>Editorials</h3>
+                        <span class="explore-link">Explore</span>
+                    </div>
+                </a>
+            </div>
+            
+            <div class="text-center fade-up" style="margin-top: 60px;">
+                <a href="#" class="btn btn-solid">View Full Portfolio</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Simple Video Block (Dark Mode Trigger) -->
+    <section id="video" class="video-block">
+        <div class="container">
+            <div class="video-wrapper fade-up">
+                <video autoplay muted loop playsinline class="cinematography-video">
+                    <source src="https://videos.pexels.com/video-files/5802111/5802111-hd_1920_1080_25fps.mp4" type="video/mp4">
+                </video>
+                <div class="video-text-overlay">
+                    <h2>Cinematography</h2>
+                    <p class="script-accent">Moving Memories</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Classic Testimonials -->
+    <section class="testimonials-classic">
+        <div class="container">
+            <div class="testimonial-content fade-up">
+                <p class="quote-mark script-accent">"</p>
+                <p class="quote-text">Udit and his team were absolutely incredible. They captured our day with such elegance and ease. Looking at our photos feels like reliving a beautiful dream. We cannot recommend them enough for your special day.</p>
+                <p class="quote-author">Sarah & James</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- As Featured In -->
+    <section class="featured-in">
+        <div class="container fade-up">
+            <p class="kicker text-center">As Seen In</p>
+            <div class="logos-grid">
+                <div class="logo-item">STYLE ME PRETTY</div>
+                <div class="logo-item">BRIDES</div>
+                <div class="logo-item">THE KNOT</div>
+                <div class="logo-item">VOGUE</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Romantic Contact Form -->
+    <section id="contact" class="contact-romantic">
+        <div class="container">
+            <div class="contact-wrapper fade-up">
+                <div class="contact-header text-center">
+                    <p class="script-accent text-accent">Say Hello</p>
+                    <h2>Let's Create Together</h2>
+                    <p>We take on a limited number of weddings each year to ensure we can provide the highest level of service to our couples. Please fill out the form below to inquire about our availability.</p>
+                </div>
+                
+                <form id="contactForm" class="classic-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Your Names</label>
+                            <input type="text" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Email Address</label>
+                            <input type="email" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Wedding Date</label>
+                            <input type="date" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Wedding Venue</label>
+                            <input type="text" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Tell us about your vision</label>
+                        <textarea rows="4" required></textarea>
+                    </div>
+                    <div class="text-center" style="margin-top: 40px;">
+                        <button type="submit" class="btn btn-solid submit-btn">Send Inquiry</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Classic Footer -->
+    <footer class="footer-classic">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">UDIT PHOTOGRAPHY</div>
+                <p class="script-accent" style="font-size: 2rem; margin: 20px 0;">Capturing Love</p>
+                <div class="footer-socials">
+                    <a href="#">Instagram</a>
+                    <a href="#">Pinterest</a>
+                    <a href="#">Facebook</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Udit Photography. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

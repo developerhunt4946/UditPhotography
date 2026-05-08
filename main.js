@@ -6,8 +6,11 @@ window.addEventListener('load', () => {
     tl.to('.loader-line', { scaleX: 1, duration: 1, ease: 'power2.inOut' })
       .to('.loader-content', { opacity: 1, duration: 1.2, ease: 'power2.inOut' }, 0)
       .to('.loader-content', { opacity: 0, duration: 0.8, delay: 1, ease: 'power2.inOut' })
-      .to('.loader-overlay-left', { xPercent: -100, duration: 1.5, ease: 'power4.inOut' }, "-=0.4")
-      .to('.loader-overlay-right', { xPercent: 100, duration: 1.5, ease: 'power4.inOut' }, "-=1.5")
+      .to('#loader', { 
+          opacity: 0, 
+          duration: 1.5, 
+          ease: 'power2.inOut' 
+      }, "-=0.2")
       .to('#loader', {
           display: 'none',
           onComplete: () => {

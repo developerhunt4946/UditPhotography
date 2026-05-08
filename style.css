@@ -218,25 +218,7 @@ p {
     display: flex;
     align-items: center;
     justify-content: center;
-    pointer-events: none;
-}
-
-.loader-overlay-left,
-.loader-overlay-right {
-    position: absolute;
-    top: 0;
-    width: 50%;
-    height: 100%;
-    background: var(--bg-dark);
-    z-index: 1;
-}
-
-.loader-overlay-left {
-    left: 0;
-}
-
-.loader-overlay-right {
-    right: 0;
+    background: #0a0a0a;
 }
 
 .loader-content {

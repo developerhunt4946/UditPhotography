@@ -1,5 +1,66 @@
 gsap.registerPlugin(ScrollTrigger);
 
+/* --- Bento Gallery Logic --- */
+function initBentoGallery() {
+    try {
+        const bentoItems = document.querySelectorAll('.bento-item');
+        const lightbox = document.getElementById('bento-lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const lightboxClose = document.querySelector('.lightbox-close');
+        const lightboxOverlay = document.querySelector('.lightbox-overlay');
+
+        if (!bentoItems.length || !lightbox) return;
+
+        bentoItems.forEach(item => {
+            const images = item.querySelectorAll('img');
+            if (images.length <= 1) return;
+
+            let currentIndex = 0;
+            let intervalTime = parseInt(item.getAttribute('data-interval')) || 3000;
+            let timer;
+
+            const startCycling = () => {
+                timer = setInterval(() => {
+                    images[currentIndex].classList.remove('active');
+                    currentIndex = (currentIndex + 1) % images.length;
+                    images[currentIndex].classList.add('active');
+                }, intervalTime);
+            };
+
+            const stopCycling = () => {
+                clearInterval(timer);
+            };
+
+            startCycling();
+
+            item.addEventListener('mouseenter', stopCycling);
+            item.addEventListener('mouseleave', startCycling);
+
+            item.addEventListener('click', (e) => {
+                const activeImg = item.querySelector('img.active') || images[0];
+                if (activeImg) {
+                    lightboxImg.src = activeImg.src;
+                    lightbox.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                }
+            });
+        });
+
+        const closeLightbox = () => {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = '';
+        };
+
+        if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
+        if (lightboxOverlay) lightboxOverlay.addEventListener('click', closeLightbox);
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeLightbox();
+        });
+    } catch (err) {
+        console.error("Bento Gallery Init Error:", err);
+    }
+}
+
 /* --- Cinematic Loader --- */
 window.addEventListener('load', () => {
     const tl = gsap.timeline();
@@ -14,6 +75,7 @@ window.addEventListener('load', () => {
       .to('#loader', {
           display: 'none',
           onComplete: () => {
+              initBentoGallery();
               initHeroAnimations();
               initAllScrollTriggersSequentially();
               setTimeout(() => ScrollTrigger.refresh(), 500);

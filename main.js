@@ -37,6 +37,24 @@ if (hamburger && mobileMenu) {
         hamburger.classList.remove('active');
         mobileMenu.classList.remove('active');
     }));
+
+    // Mobile Contact Modal Logic
+    const mobileContactBtn = document.querySelector('.btn-mobile-contact');
+    const contactModal = document.querySelector('.contact-modal');
+    const contactModalClose = document.querySelector('.contact-modal-close');
+
+    if (mobileContactBtn && contactModal) {
+        mobileContactBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            hamburger.classList.remove('active');
+            mobileMenu.classList.remove('active');
+            contactModal.classList.add('active');
+        });
+
+        contactModalClose.addEventListener('click', () => {
+            contactModal.classList.remove('active');
+        });
+    }
 }
 
 /* --- Navbar Scroll --- */

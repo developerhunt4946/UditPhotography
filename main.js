@@ -65,22 +65,22 @@ function initBentoGallery() {
 window.addEventListener('load', () => {
     const tl = gsap.timeline();
     tl.to('.loader-line', { scaleX: 1, duration: 1, ease: 'power2.inOut' })
-      .to('.loader-content', { opacity: 1, duration: 1.2, ease: 'power2.inOut' }, 0)
-      .to('.loader-content', { opacity: 0, duration: 0.8, delay: 1, ease: 'power2.inOut' })
-      .to('#loader', { 
-          opacity: 0, 
-          duration: 1.5, 
-          ease: 'power2.inOut' 
-      }, "-=0.2")
-      .to('#loader', {
-          display: 'none',
-          onComplete: () => {
-              initBentoGallery();
-              initHeroAnimations();
-              initAllScrollTriggersSequentially();
-              setTimeout(() => ScrollTrigger.refresh(), 500);
-          }
-      });
+        .to('.loader-content', { opacity: 1, duration: 1.2, ease: 'power2.inOut' }, 0)
+        .to('.loader-content', { opacity: 0, duration: 0.8, delay: 1, ease: 'power2.inOut' })
+        .to('#loader', {
+            opacity: 0,
+            duration: 2,
+            ease: 'power2.inOut'
+        }, "-=0.2")
+        .to('#loader', {
+            display: 'none',
+            onComplete: () => {
+                initBentoGallery();
+                initHeroAnimations();
+                initAllScrollTriggersSequentially();
+                setTimeout(() => ScrollTrigger.refresh(), 500);
+            }
+        });
 });
 
 /* --- Mobile Menu --- */
@@ -97,7 +97,7 @@ if (hamburger && mobileMenu) {
             gsap.fromTo('.mobile-links li', { y: 30, opacity: 0 }, { y: 0, opacity: 1, stagger: 0.08, duration: 0.5, delay: 0.2, ease: 'power2.out' });
         }
     });
-    
+
     mobileLinksAll.forEach(link => link.addEventListener('click', () => {
         hamburger.classList.remove('active');
         mobileMenu.classList.remove('active');
@@ -137,17 +137,17 @@ function initHeroAnimations() {
     gsap.set('.hero-bg video', { width: '100%', height: '100%', objectFit: 'cover', rotation: -90, scale: 1.8 });
     gsap.to('.hero-bg video', {
         rotation: -90,
-        scale: 2.0, 
+        scale: 2.0,
         ease: 'none',
         scrollTrigger: { trigger: '.hero-classic', start: 'top top', end: 'bottom top', scrub: true }
     });
 }
 
 function updateTheme(isLight) {
-    gsap.to('body', { 
-        backgroundColor: isLight ? '#f5f5f5' : '#0a0a0a', 
-        duration: 0.8, 
-        overwrite: 'auto' 
+    gsap.to('body', {
+        backgroundColor: isLight ? '#f5f5f5' : '#0a0a0a',
+        duration: 0.8,
+        overwrite: 'auto'
     });
     if (isLight) document.body.classList.add('light-theme');
     else document.body.classList.remove('light-theme');
@@ -167,7 +167,7 @@ function addThemeTrigger(section) {
 function initAllScrollTriggersSequentially() {
     // We must create ALL ScrollTriggers in the order they appear in the DOM
     const sections = document.querySelectorAll('section');
-    
+
     sections.forEach(section => {
         // Add theme trigger for every section
         addThemeTrigger(section);
@@ -221,12 +221,62 @@ function initAllScrollTriggersSequentially() {
 
         if (section.id === 'experience') {
             const scrubVideo = section.querySelector('#experience-video');
+            const typingTarget = section.querySelector('#typing-text');
+
+            if (typingTarget) {
+                const phrases = ["Emotion in Motion", "Timeless Frames", "Unscripted Beauty", "Your Legacy, Filmed"];
+                let phraseIdx = 0;
+                let charIdx = 0;
+                let isDeleting = false;
+                let typeSpeed = 100;
+
+                function typeEffect() {
+                    const current = phrases[phraseIdx];
+                    if (isDeleting) {
+                        typingTarget.textContent = current.substring(0, charIdx - 1);
+                        charIdx--;
+                        typeSpeed = 50;
+                    } else {
+                        typingTarget.textContent = current.substring(0, charIdx + 1);
+                        charIdx++;
+                        typeSpeed = 150;
+                    }
+
+                    if (!isDeleting && charIdx === current.length) {
+                        isDeleting = true;
+                        typeSpeed = 3000;
+                    } else if (isDeleting && charIdx === 0) {
+                        isDeleting = false;
+                        phraseIdx = (phraseIdx + 1) % phrases.length;
+                        typeSpeed = 500;
+                    }
+                    setTimeout(typeEffect, typeSpeed);
+                }
+
+                ScrollTrigger.create({
+                    trigger: section,
+                    start: "top 70%",
+                    onEnter: () => { if (charIdx === 0 && !isDeleting) typeEffect(); },
+                    once: true
+                });
+            }
+
             if (scrubVideo) {
                 const scrubTl = gsap.timeline({
-                    scrollTrigger: { trigger: section, start: "top top", end: "+=100%", scrub: 1, pin: true }
+                    scrollTrigger: { 
+                        trigger: section, 
+                        start: "top bottom", 
+                        end: "bottom top", 
+                        scrub: 1 
+                    }
                 });
                 const addVideoTween = () => {
                     scrubTl.fromTo(scrubVideo, { currentTime: 0 }, { currentTime: scrubVideo.duration || 1, ease: "none" });
+                    
+                    const scrollHint = section.querySelector('.experience-scroll-hint');
+                    if (scrollHint) {
+                        scrubTl.to(scrollHint, { opacity: 0, y: 20, duration: 0.2 }, 0);
+                    }
                 };
                 if (scrubVideo.readyState >= 1) addVideoTween();
                 else scrubVideo.addEventListener('loadedmetadata', addVideoTween);

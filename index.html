@@ -23,6 +23,7 @@
     <!-- Cinematic Loader -->
     <div id="loader">
         <div class="loader-content">
+            <img src="assets/blackbglogo.png" alt="Udit Photography" class="loader-logo">
             <h1 class="loader-title">Udit Photography</h1>
             <p class="loader-subtitle script-accent">A Visual Legacy</p>
             <div class="loader-line"></div>
@@ -32,6 +33,7 @@
     <!-- Navigation -->
     <nav id="navbar">
         <div class="nav-container">
+            <!-- Mobile Toggle -->
             <div class="hamburger">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5"
                     stroke-linecap="round" stroke-linejoin="round">
@@ -40,9 +42,26 @@
                     <line x1="3" y1="18" x2="21" y2="18"></line>
                 </svg>
             </div>
+
+            <!-- Desktop Left Links -->
+            <ul class="nav-links nav-left">
+                <li><a href="#why">About</a></li>
+                <li><a href="#films">Films</a></li>
+            </ul>
+
+            <!-- Centered Logo -->
             <a href="#" class="logo">
                 <img src="assets/blackbglogo.png" alt="Udit Photography Logo">
             </a>
+
+            <!-- Desktop Right Links -->
+            <ul class="nav-links nav-right">
+                <li><a href="#stories">Stories</a></li>
+                <li><a href="#gallery-deck">Portfolio</a></li>
+                <li class="nav-btn-wrap"><a href="#enquiry" class="btn btn-outline btn-nav">Enquire</a></li>
+            </ul>
+
+            <!-- Mobile Contact Icon -->
             <div class="nav-right-mobile">
                 <a href="#enquiry" class="btn-mobile-contact">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5"
@@ -52,15 +71,6 @@
                     </svg>
                 </a>
             </div>
-            <ul class="nav-links left-links">
-                <li><a href="#why">About</a></li>
-                <li><a href="#films">Films</a></li>
-                <li><a href="#stories">Stories</a></li>
-            </ul>
-            <ul class="nav-links right-links">
-                <li><a href="#gallery-deck">Portfolio</a></li>
-                <li><a href="#enquiry" class="btn btn-outline btn-nav">Enquire</a></li>
-            </ul>
         </div>
 
         <!-- Mobile Menu Overlay -->
@@ -240,6 +250,23 @@
     <!-- Scroll-Scrubbed Experience Video -->
     <section id="experience" class="experience-scrub-section">
         <div class="experience-scrub-container">
+            <!-- Cinematic Metadata Elements -->
+            <div class="cinematic-meta meta-top-left">
+                <span>REC ●</span>
+                <span>00:24:15:08</span>
+            </div>
+            <div class="cinematic-meta meta-top-right">
+                <span>4K RAW</span>
+                <span>24 FPS</span>
+            </div>
+            <div class="cinematic-meta meta-bottom-left">
+                <span>ISO 100</span>
+                <span>f/2.8</span>
+            </div>
+            <div class="cinematic-meta meta-bottom-right">
+                <span>UDIT LOG-C</span>
+            </div>
+
             <video id="experience-video" class="scrub-video" muted playsinline preload="auto">
                 <source src="https://videos.pexels.com/video-files/4011471/4011471-hd_1920_1080_30fps.mp4"
                     type="video/mp4">
@@ -247,6 +274,12 @@
             <div class="experience-overlay">
                 <p class="script-accent fade-up" style="color: #fff;">The Experience</p>
                 <h2 class="fade-up">Cinematic Vision</h2>
+                <div class="typing-container">
+                    <span id="typing-text"></span><span class="cursor">|</span>
+                </div>
+                <div class="experience-scroll-hint">
+                    <span>Scroll to scrub</span>
+                </div>
             </div>
         </div>
     </section>
@@ -293,24 +326,6 @@
                 <div class="bento-item bento-1x1" data-interval="3300">
                     <img src="https://images.unsplash.com/photo-1522673607200-164883214cde?q=80&w=500&auto=format&fit=crop" class="active">
                     <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?q=80&w=500&auto=format&fit=crop">
-                </div>
-
-                <!-- Row 4 & 5 -->
-                <div class="bento-item bento-2x2" data-interval="4800">
-                    <img src="https://images.unsplash.com/photo-1519225495810-758b631f2fbb?q=80&w=800&auto=format&fit=crop" class="active">
-                    <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=800&auto=format&fit=crop">
-                </div>
-                <div class="bento-item bento-1x1" data-interval="3600">
-                    <img src="https://images.unsplash.com/photo-1532712938310-34cb3982ef74?q=80&w=500&auto=format&fit=crop" class="active">
-                    <img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?q=80&w=500&auto=format&fit=crop">
-                </div>
-                <div class="bento-item bento-1x2" data-interval="4100">
-                    <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?q=80&w=600&auto=format&fit=crop" class="active">
-                    <img src="https://images.unsplash.com/photo-1522673607200-164883214cde?q=80&w=600&auto=format&fit=crop">
-                </div>
-                <div class="bento-item bento-1x1" data-interval="3000">
-                    <img src="https://images.unsplash.com/photo-1543616991-75a2c12516bb?q=80&w=500&auto=format&fit=crop" class="active">
-                    <img src="https://images.unsplash.com/photo-1606800052052-a08af7148866?q=80&w=500&auto=format&fit=crop">
                 </div>
             </div>
         </div>

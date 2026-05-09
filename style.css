@@ -231,6 +231,13 @@ p {
     opacity: 0;
 }
 
+.loader-logo {
+    height: 80px;
+    width: auto;
+    margin-bottom: 30px;
+    filter: brightness(1.2);
+}
+
 .loader-title {
     font-size: clamp(1.8rem, 3.5vw, 3.5rem);
     letter-spacing: 8px;
@@ -275,9 +282,27 @@ nav.scrolled {
     max-width: 1400px;
     margin: 0 auto;
     padding: 0 5vw;
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
     align-items: center;
+}
+
+.nav-left {
+    display: flex;
+    justify-content: flex-start;
+    gap: 40px;
+}
+
+.nav-right {
+    display: flex;
+    justify-content: flex-end;
+    gap: 40px;
+}
+
+.logo {
+    display: flex;
+    justify-content: center;
+    padding: 0 40px;
 }
 
 .logo img {
@@ -307,8 +332,6 @@ nav.scrolled {
 }
 
 .nav-links {
-    display: flex;
-    gap: 40px;
     list-style: none;
     align-items: center;
 }
@@ -480,12 +503,15 @@ nav.scrolled {
     }
 
     .nav-container {
-        height: 100%;
         display: flex;
-        align-items: center;
         justify-content: space-between;
         padding: 0 25px;
-        max-width: 100%;
+        align-items: center;
+        height: 100%;
+    }
+
+    .nav-left, .nav-right {
+        display: none;
     }
 
     .hamburger {
@@ -497,23 +523,18 @@ nav.scrolled {
     .logo {
         flex: 1;
         display: flex;
-        align-items: center;
         justify-content: center;
+        padding: 0;
     }
 
     .logo img {
         height: 28px;
-        mix-blend-mode: screen;
     }
 
     .nav-right-mobile {
         display: flex;
         width: 60px;
         justify-content: flex-end;
-    }
-
-    .nav-links {
-        display: none;
     }
 }
 
@@ -964,6 +985,113 @@ nav.scrolled {
     letter-spacing: 6px;
     font-weight: 300;
     color: #fff !important;
+    margin-bottom: 20px;
+}
+
+.typing-container {
+    font-size: clamp(0.9rem, 2vw, 1.2rem);
+    color: var(--gold);
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    font-weight: 500;
+    min-height: 1.5em;
+}
+
+.cursor {
+    animation: blink 1s step-end infinite;
+    margin-left: 5px;
+}
+
+@keyframes blink {
+    from, to { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+/* Cinematic Metadata & Viewfinder */
+.cinematic-meta {
+    position: absolute;
+    z-index: 5;
+    color: rgba(255, 255, 255, 0.6);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.6rem;
+    letter-spacing: 2px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 60px;
+    pointer-events: none;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+.meta-top-left { top: 0; left: 0; }
+.meta-top-right { top: 0; right: 0; text-align: right; }
+.meta-bottom-left { bottom: 0; left: 0; }
+.meta-bottom-right { bottom: 0; right: 0; text-align: right; }
+
+.meta-top-left span:first-child {
+    color: #ff3b30;
+    font-weight: 700;
+    animation: pulseRed 1.5s infinite;
+}
+
+/* Viewfinder Corners */
+.experience-scrub-container::before,
+.experience-scrub-container::after {
+    content: '';
+    position: absolute;
+    top: 40px;
+    bottom: 40px;
+    left: 40px;
+    right: 40px;
+    pointer-events: none;
+    z-index: 4;
+}
+
+.experience-scrub-container::before {
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.experience-scrub-container::after {
+    border-left: 1px solid rgba(255, 255, 255, 0.2);
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
+    mask: linear-gradient(to bottom, #fff 100px, transparent 100px, transparent calc(100% - 100px), #fff calc(100% - 100px));
+}
+
+/* Redefine before/after to create L-shaped corners */
+.experience-scrub-container::before {
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    mask: 
+        linear-gradient(to right, #fff 40px, transparent 40px, transparent calc(100% - 40px), #fff calc(100% - 40px)),
+        linear-gradient(to bottom, #fff 40px, transparent 40px, transparent calc(100% - 40px), #fff calc(100% - 40px));
+    mask-composite: intersect;
+}
+
+@keyframes pulseRed {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; }
+}
+
+.experience-scroll-hint {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    animation: bounceDown 2s infinite;
+}
+
+@keyframes bounceDown {
+    0%, 20%, 50%, 80%, 100% { transform: translate(-50%, 0); }
+    40% { transform: translate(-50%, -10px); }
+    60% { transform: translate(-50%, -5px); }
 }
 
 /* Deck Gallery (DARK) — reduced spacing */

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | Udit Photography - Cinematic Wedding Stories</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Montserrat:wght@200;300;400;500;600&family=Great+Vibes&display=swap"
+        rel="stylesheet">
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+</head>
+
+<body class="dark-section">
+
+    <!-- Film Grain Overlay -->
+    <div class="grain-overlay"></div>
+
+    <!-- Cinematic Loader -->
+    <div id="loader">
+        <div class="loader-content">
+            <img src="assets/blackbglogo.png" alt="Udit Photography" class="loader-logo">
+            <h1 class="loader-title">Udit Photography</h1>
+            <p class="loader-subtitle script-accent">A Visual Legacy</p>
+            <div class="loader-line"></div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <div class="hamburger">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+            </div>
+            <ul class="nav-links nav-left">
+                <li><a href="index.html#why">About</a></li>
+                <li><a href="index.html#films">Films</a></li>
+            </ul>
+            <a href="index.html" class="logo">
+                <img src="assets/blackbglogo.png" alt="Udit Photography Logo">
+            </a>
+            <ul class="nav-links nav-right">
+                <li><a href="index.html#stories">Stories</a></li>
+                <li><a href="portfolio.html" class="active">Portfolio</a></li>
+                <li class="nav-btn-wrap"><a href="index.html#enquiry" class="btn btn-outline btn-nav">Enquire</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Portfolio Hero -->
+    <section class="portfolio-hero">
+        <img src="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1600&auto=format&fit=crop" alt="Portfolio Hero">
+        <div class="portfolio-hero-content fade-up">
+            <p class="script-accent">The Collection</p>
+            <h1>Visual Anthology</h1>
+            <p class="kicker">A Decade of Crafting Love Stories</p>
+        </div>
+    </section>
+
+    <!-- Filter Bar -->
+    <div class="filter-bar">
+        <div class="container">
+            <div class="filter-container">
+                <button class="filter-btn active" data-filter="all">Featured</button>
+                <button class="filter-btn" id="see-all-photos">See All Photos</button>
+                <button class="filter-btn" data-filter="wedding">Weddings</button>
+                <button class="filter-btn" data-filter="pre-wedding">Pre-Wedding</button>
+                <button class="filter-btn" data-filter="films">Films</button>
+                <button class="filter-btn" data-filter="portraits">Portraits</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Portfolio Grid -->
+    <section class="portfolio-grid-section">
+        <div class="container">
+            <div class="portfolio-grid">
+                <!-- Wedding -->
+                <div class="portfolio-item tall" data-category="wedding" data-title="The Royal Legacy" data-images="https://images.unsplash.com/photo-1606800052052-a08af7148866?q=80&w=800,https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=800,https://images.unsplash.com/photo-1543616991-75a2c12516bb?q=80&w=800,https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=800">
+                    <img src="https://images.unsplash.com/photo-1606800052052-a08af7148866?q=80&w=800&auto=format&fit=crop" alt="Wedding">
+                    <div class="portfolio-overlay">
+                        <span>Udaipur, Rajasthan</span>
+                        <h3>The Royal Legacy</h3>
+                    </div>
+                </div>
+                <!-- Pre-Wedding -->
+                <div class="portfolio-item wide" data-category="pre-wedding" data-title="Mist & Mountains" data-images="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=800,https://images.unsplash.com/photo-1522673607200-164883214cde?q=80&w=800,https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?q=80&w=800">
+                    <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=800&auto=format&fit=crop" alt="Pre-Wedding">
+                    <div class="portfolio-overlay">
+                        <span>Ladakh, India</span>
+                        <h3>Mist & Mountains</h3>
+                    </div>
+                </div>
+                <!-- Portrait -->
+                <div class="portfolio-item" data-category="portraits" data-title="Grace in Motion" data-images="https://images.unsplash.com/photo-1520854221256-17451cc331bf?q=80&w=800,https://images.unsplash.com/photo-1523438885200-e635ba2c371e?q=80&w=800">
+                    <img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?q=80&w=800&auto=format&fit=crop" alt="Portrait">
+                    <div class="portfolio-overlay">
+                        <span>Editorial</span>
+                        <h3>Grace in Motion</h3>
+                    </div>
+                </div>
+                <!-- Film -->
+                <div class="portfolio-item" data-category="films" data-title="Coastal Symphony" data-images="https://images.unsplash.com/photo-1519225495810-758b631f2fbb?q=80&w=800,https://images.unsplash.com/photo-1511795409834-ef04bbd61622?q=80&w=800">
+                    <img src="https://images.unsplash.com/photo-1519225495810-758b631f2fbb?q=80&w=800&auto=format&fit=crop" alt="Film">
+                    <div class="portfolio-overlay">
+                        <span>Cinematic Film</span>
+                        <h3>Coastal Symphony</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Hidden data for "See All" to ensure it shows the full catalog even with reduced grid items -->
+        <div class="hidden-portfolio-data" style="display: none;" 
+             data-images="https://images.unsplash.com/photo-1543616991-75a2c12516bb?q=80&w=800,https://images.unsplash.com/photo-1606800052052-a08af7148866?q=80&w=800,https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?q=80&w=800,https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=800,https://images.unsplash.com/photo-1511795409834-ef04bbd61622?q=80&w=800,https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=800,https://images.unsplash.com/photo-1523438885200-e635ba2c371e?q=80&w=800,https://images.unsplash.com/photo-1520854221256-17451cc331bf?q=80&w=800">
+        </div>
+    </section>
+
+    <!-- Collection Modal -->
+    <div id="collection-modal" class="collection-modal">
+        <div class="modal-header">
+            <div class="modal-title-wrap">
+                <span id="modal-category">Wedding</span>
+                <h2 id="modal-title">The Royal Legacy</h2>
+            </div>
+            <button class="close-modal">&times;</button>
+        </div>
+        <div class="modal-content">
+            <div class="modal-grid" id="modal-grid">
+                <!-- Populated by JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Bento Lightbox (Shared) -->
+    <div id="bento-lightbox" class="bento-lightbox">
+        <div class="lightbox-overlay"></div>
+        <div class="lightbox-container">
+            <img src="" alt="Lightbox Image" id="lightbox-img">
+            <button class="lightbox-close">&times;</button>
+        </div>
+    </div>
+
+
+    <!-- Featured Story: The Jaisalmer Legacy -->
+    <section class="featured-story-block light-section">
+        <div class="container">
+            <div class="story-header fade-up">
+                <p class="script-accent">Featured Story</p>
+                <h2>The Golden Sand Symphony</h2>
+                <p>A royal celebration in the heart of the Thar Desert, capturing the essence of Jaisalmer's heritage through a cinematic lens.</p>
+            </div>
+            
+            <div class="story-masonry">
+                <div class="story-img-1 fade-up">
+                    <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?q=80&w=1200&auto=format&fit=crop" alt="Jaisalmer 1">
+                </div>
+                <div class="story-img-2 fade-up">
+                    <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=800&auto=format&fit=crop" alt="Jaisalmer 2">
+                </div>
+                <div class="story-img-3 fade-up">
+                    <img src="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=800&auto=format&fit=crop" alt="Jaisalmer 3">
+                </div>
+                <div class="story-img-4 fade-up">
+                    <img src="https://images.unsplash.com/photo-1522673607200-164883214cde?q=80&w=1200&auto=format&fit=crop" alt="Jaisalmer 4">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cinematic Footer -->
+    <footer class="footer-cinematic">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <img src="assets/blackbglogo.png" alt="Udit Photography Logo"
+                        style="height: 50px; width: auto; margin-bottom: 20px; filter: brightness(1.2);" class="logo">
+                    <p>India's premier cinematic wedding photography and filmmaking studio. Crafting timeless visual
+                        stories since 2013.</p>
+                    <div class="footer-brand-socials">
+                        <a href="#" aria-label="Facebook"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a>
+                        <a href="#" aria-label="Instagram"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></a>
+                        <a href="#" aria-label="LinkedIn"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></a>
+                        <a href="#" aria-label="X (Twitter)"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"></path></svg></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Explore</h4>
+                    <ul>
+                        <li><a href="index.html#films">Our Films</a></li>
+                        <li><a href="index.html#stories">Stories</a></li>
+                        <li><a href="portfolio.html">Portfolio</a></li>
+                        <li><a href="index.html#enquiry">Enquire</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>The Studio</h4>
+                    <address>
+                        Udit Photography Studio<br>
+                        Banda, Shahjahanpur<br>
+                        Uttar Pradesh, India<br><br>
+                        [EMAIL_ADDRESS]<br>
+                        +91 7860078969 <br>
+                        +91 9336414677
+                    </address>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Udit Photography. All Rights Reserved.</p>
+                <p class="footer-credit">Website by <a href="#" target="_blank">FitZing Technologies</a></p>
+            </div>
+        </div>
+    </footer>
+
+
+    <script src="main.js"></script>
+</body>
+
+</html>

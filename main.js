@@ -1,13 +1,32 @@
 gsap.registerPlugin(ScrollTrigger);
 
+/* --- Lightbox Logic --- */
+function initLightbox() {
+    const lightbox = document.getElementById('bento-lightbox');
+    if (!lightbox) return;
+
+    const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxClose = document.querySelector('.lightbox-close');
+    const lightboxOverlay = document.querySelector('.lightbox-overlay');
+
+    const closeLightbox = () => {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = '';
+    };
+
+    if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
+    if (lightboxOverlay) lightboxOverlay.addEventListener('click', closeLightbox);
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeLightbox();
+    });
+}
+
 /* --- Bento Gallery Logic --- */
 function initBentoGallery() {
     try {
         const bentoItems = document.querySelectorAll('.bento-item');
         const lightbox = document.getElementById('bento-lightbox');
         const lightboxImg = document.getElementById('lightbox-img');
-        const lightboxClose = document.querySelector('.lightbox-close');
-        const lightboxOverlay = document.querySelector('.lightbox-overlay');
 
         if (!bentoItems.length || !lightbox) return;
 
@@ -45,38 +64,166 @@ function initBentoGallery() {
                 }
             });
         });
-
-        const closeLightbox = () => {
-            lightbox.classList.remove('active');
-            document.body.style.overflow = '';
-        };
-
-        if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
-        if (lightboxOverlay) lightboxOverlay.addEventListener('click', closeLightbox);
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') closeLightbox();
-        });
     } catch (err) {
         console.error("Bento Gallery Init Error:", err);
     }
 }
 
+/* --- Portfolio Filtering & Collection Modal --- */
+function initPortfolio() {
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const portfolioItems = document.querySelectorAll('.portfolio-item');
+    const collectionModal = document.getElementById('collection-modal');
+    const modalGrid = document.getElementById('modal-grid');
+    const modalTitle = document.getElementById('modal-title');
+    const modalCategory = document.getElementById('modal-category');
+    const closeModal = document.querySelector('.close-modal');
+    const seeAllBtn = document.getElementById('see-all-photos');
+    
+    const lightbox = document.getElementById('bento-lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+
+    if (!portfolioItems.length) return;
+
+    // Filtering logic
+    filterBtns.forEach(btn => {
+        if (btn.id === 'see-all-photos') return;
+        btn.addEventListener('click', () => {
+            filterBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            const filter = btn.getAttribute('data-filter');
+            portfolioItems.forEach(item => {
+                if (filter === 'all' || item.getAttribute('data-category') === filter) {
+                    gsap.to(item, { scale: 1, opacity: 1, duration: 0.5, display: 'block', ease: 'power2.out' });
+                } else {
+                    gsap.to(item, { scale: 0.8, opacity: 0, duration: 0.5, display: 'none', ease: 'power2.out' });
+                }
+            });
+            setTimeout(() => ScrollTrigger.refresh(), 600);
+        });
+    });
+
+    const openModal = (title, category, imagesStr) => {
+        if (!imagesStr || !collectionModal) return;
+        const images = imagesStr.split(',');
+        modalTitle.innerText = title;
+        modalCategory.innerText = category;
+        modalGrid.innerHTML = '';
+        
+        images.forEach(imgSrc => {
+            const div = document.createElement('div');
+            div.className = 'modal-grid-item';
+            div.innerHTML = `<img src="${imgSrc.trim()}" alt="${title}">`;
+            div.addEventListener('click', () => {
+                if (lightboxImg) lightboxImg.src = imgSrc.trim();
+                if (lightbox) lightbox.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+            modalGrid.appendChild(div);
+        });
+
+        collectionModal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        gsap.fromTo('.modal-grid-item', { opacity: 0, y: 30 }, { opacity: 1, y: 0, stagger: 0.05, duration: 0.5, ease: 'power2.out' });
+    };
+
+    // Collection Modal Logic for items
+    portfolioItems.forEach(item => {
+        item.addEventListener('click', () => {
+            const title = item.getAttribute('data-title');
+            const category = item.getAttribute('data-category');
+            const imagesStr = item.getAttribute('data-images');
+            openModal(title, category, imagesStr);
+        });
+    });
+
+    // See All Logic
+    if (seeAllBtn) {
+        seeAllBtn.addEventListener('click', () => {
+            let allImages = [];
+            
+            // Collect from visible items
+            portfolioItems.forEach(item => {
+                const imgs = item.getAttribute('data-images');
+                if (imgs) allImages = allImages.concat(imgs.split(','));
+            });
+            
+            // Collect from hidden data
+            const hiddenData = document.querySelector('.hidden-portfolio-data');
+            if (hiddenData) {
+                const hiddenImgs = hiddenData.getAttribute('data-images');
+                if (hiddenImgs) allImages = allImages.concat(hiddenImgs.split(','));
+            }
+
+            // Remove duplicates and trim
+            const uniqueImages = [...new Set(allImages.map(s => s.trim()))];
+            openModal('Complete Portfolio', 'All Works', uniqueImages.join(','));
+        });
+    }
+
+    if (closeModal && collectionModal) {
+        closeModal.addEventListener('click', () => {
+            collectionModal.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+    }
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && collectionModal && collectionModal.classList.contains('active')) {
+            collectionModal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    });
+}
+
 /* --- Cinematic Loader --- */
 window.addEventListener('load', () => {
     const tl = gsap.timeline();
-    tl.to('.loader-line', { scaleX: 1, duration: 1, ease: 'power2.inOut' })
-        .to('.loader-content', { opacity: 1, duration: 1.2, ease: 'power2.inOut' }, 0)
-        .to('.loader-content', { opacity: 0, duration: 0.8, delay: 1, ease: 'power2.inOut' })
+
+    tl.to('.loader-content', { opacity: 1, duration: 0.5 })
+        .to('.loader-logo', { 
+            y: 0, 
+            opacity: 1, 
+            scale: 1, 
+            duration: 1.8, 
+            ease: 'expo.out' 
+        }, 'reveal')
+        .to('.loader-title', { 
+            y: 0, 
+            opacity: 1, 
+            duration: 1.6, 
+            ease: 'expo.out' 
+        }, 'reveal+=0.3')
+        .to('.loader-subtitle', { 
+            y: 0, 
+            opacity: 1, 
+            duration: 1.6, 
+            ease: 'expo.out' 
+        }, 'reveal+=0.6')
+        .to('.loader-line', { 
+            scaleX: 1, 
+            duration: 2, 
+            ease: 'power4.inOut' 
+        }, 'reveal+=0.4')
+        .to('.loader-content', { 
+            y: -30, 
+            opacity: 0, 
+            duration: 1.2, 
+            delay: 1.8, 
+            ease: 'power4.inOut' 
+        })
         .to('#loader', {
-            opacity: 0,
-            duration: 2,
-            ease: 'power2.inOut'
-        }, "-=0.2")
-        .to('#loader', {
+            yPercent: -100,
+            duration: 1.8,
+            ease: 'expo.inOut'
+        }, '-=0.8')
+        .set('#loader', {
             display: 'none',
             onComplete: () => {
+                initLightbox(); // New Global Init
                 initBentoGallery();
                 initHeroAnimations();
+                initPortfolio();
                 initAllScrollTriggersSequentially();
                 setTimeout(() => ScrollTrigger.refresh(), 500);
             }
@@ -329,19 +476,44 @@ function initAllScrollTriggersSequentially() {
     });
 }
 
-/* --- Form Submission --- */
+/* --- Form Submission (Google Sheets Integration) --- */
+const scriptURL = 'YOUR_GOOGLE_SCRIPT_URL_HERE'; // Replace with your Google Apps Script URL
 const contactForm = document.getElementById('contactForm');
+
 if (contactForm) {
     contactForm.addEventListener('submit', (e) => {
         e.preventDefault();
         const btn = contactForm.querySelector('.submit-btn');
         const orig = btn.innerText;
         btn.innerText = "Sending...";
-        setTimeout(() => {
+        btn.disabled = true;
+
+        fetch(scriptURL, { 
+            method: 'POST', 
+            body: new FormData(contactForm)
+        })
+        .then(response => {
             btn.innerText = "Thank you! We'll be in touch.";
-            btn.style.background = "transparent"; btn.style.color = "var(--gold)"; btn.style.border = "1px solid var(--gold)";
+            btn.style.background = "transparent"; 
+            btn.style.color = "var(--gold)"; 
+            btn.style.border = "1px solid var(--gold)";
             contactForm.reset();
-            setTimeout(() => { btn.innerText = orig; btn.style = ""; }, 3000);
-        }, 1500);
+            setTimeout(() => { 
+                btn.innerText = orig; 
+                btn.style = ""; 
+                btn.disabled = false;
+            }, 5000);
+        })
+        .catch(error => {
+            console.error('Error!', error.message);
+            btn.innerText = "Oops! Try again.";
+            btn.style.background = "#ff3b30";
+            btn.style.color = "#fff";
+            setTimeout(() => { 
+                btn.innerText = orig; 
+                btn.style = ""; 
+                btn.disabled = false;
+            }, 3000);
+        });
     });
 }

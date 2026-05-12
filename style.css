@@ -42,7 +42,7 @@ body::after {
     left: 0;
     width: 100%;
     height: 100%;
-    background: radial-gradient(circle at center, transparent 0%, rgba(0,0,0,0.4) 100%);
+    background: radial-gradient(circle at center, transparent 0%, rgba(0, 0, 0, 0.4) 100%);
     pointer-events: none;
     z-index: 9999;
 }
@@ -530,7 +530,8 @@ nav.scrolled {
         height: 100%;
     }
 
-    .nav-left, .nav-right {
+    .nav-left,
+    .nav-right {
         display: none;
     }
 
@@ -1023,8 +1024,15 @@ nav.scrolled {
 }
 
 @keyframes blink {
-    from, to { opacity: 1; }
-    50% { opacity: 0; }
+
+    from,
+    to {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
 }
 
 /* Cinematic Metadata & Viewfinder */
@@ -1040,13 +1048,30 @@ nav.scrolled {
     gap: 5px;
     padding: 60px;
     pointer-events: none;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-.meta-top-left { top: 0; left: 0; }
-.meta-top-right { top: 0; right: 0; text-align: right; }
-.meta-bottom-left { bottom: 0; left: 0; }
-.meta-bottom-right { bottom: 0; right: 0; text-align: right; }
+.meta-top-left {
+    top: 0;
+    left: 0;
+}
+
+.meta-top-right {
+    top: 0;
+    right: 0;
+    text-align: right;
+}
+
+.meta-bottom-left {
+    bottom: 0;
+    left: 0;
+}
+
+.meta-bottom-right {
+    bottom: 0;
+    right: 0;
+    text-align: right;
+}
 
 .meta-top-left span:first-child {
     color: #ff3b30;
@@ -1081,15 +1106,22 @@ nav.scrolled {
 /* Redefine before/after to create L-shaped corners */
 .experience-scrub-container::before {
     border: 1px solid rgba(255, 255, 255, 0.2);
-    mask: 
+    mask:
         linear-gradient(to right, #fff 40px, transparent 40px, transparent calc(100% - 40px), #fff calc(100% - 40px)),
         linear-gradient(to bottom, #fff 40px, transparent 40px, transparent calc(100% - 40px), #fff calc(100% - 40px));
     mask-composite: intersect;
 }
 
 @keyframes pulseRed {
-    0%, 100% { opacity: 0.5; }
-    50% { opacity: 1; }
+
+    0%,
+    100% {
+        opacity: 0.5;
+    }
+
+    50% {
+        opacity: 1;
+    }
 }
 
 .experience-scroll-hint {
@@ -1109,9 +1141,22 @@ nav.scrolled {
 }
 
 @keyframes bounceDown {
-    0%, 20%, 50%, 80%, 100% { transform: translate(-50%, 0); }
-    40% { transform: translate(-50%, -10px); }
-    60% { transform: translate(-50%, -5px); }
+
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
+        transform: translate(-50%, 0);
+    }
+
+    40% {
+        transform: translate(-50%, -10px);
+    }
+
+    60% {
+        transform: translate(-50%, -5px);
+    }
 }
 
 /* Deck Gallery (DARK) — reduced spacing */
@@ -1182,7 +1227,6 @@ nav.scrolled {
 }
 
 .bento-item img.active {
-    opacity: 1;
     z-index: 2;
 }
 
@@ -1194,9 +1238,10 @@ nav.scrolled {
     height: 100%;
     object-fit: cover;
     opacity: 0;
-    transition: opacity 1s ease-in-out, transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+    will-change: opacity;
     z-index: 1;
 }
+
 
 /* Bento Spans */
 .bento-1x1 {
@@ -1919,9 +1964,10 @@ nav.scrolled {
 @media (max-width: 768px) {
     .filter-bar {
         padding: 15px 0;
-        top: 0; /* Align to top on mobile if needed, or keep sticky */
+        top: 0;
+        /* Align to top on mobile if needed, or keep sticky */
     }
-    
+
     .filter-container {
         justify-content: flex-start;
         flex-wrap: nowrap;
@@ -1929,11 +1975,13 @@ nav.scrolled {
         padding: 0 20px;
         gap: 25px;
         -webkit-overflow-scrolling: touch;
-        scrollbar-width: none; /* Firefox */
+        scrollbar-width: none;
+        /* Firefox */
     }
-    
+
     .filter-container::-webkit-scrollbar {
-        display: none; /* Chrome, Safari, Opera */
+        display: none;
+        /* Chrome, Safari, Opera */
     }
 
     .filter-btn {
@@ -2057,10 +2105,25 @@ nav.scrolled {
     gap: 20px;
 }
 
-.story-img-1 { grid-column: span 8; height: 600px; }
-.story-img-2 { grid-column: span 4; height: 600px; }
-.story-img-3 { grid-column: span 4; height: 400px; }
-.story-img-4 { grid-column: span 8; height: 400px; }
+.story-img-1 {
+    grid-column: span 8;
+    height: 600px;
+}
+
+.story-img-2 {
+    grid-column: span 4;
+    height: 600px;
+}
+
+.story-img-3 {
+    grid-column: span 4;
+    height: 400px;
+}
+
+.story-img-4 {
+    grid-column: span 8;
+    height: 400px;
+}
 
 .story-masonry img {
     width: 100%;
@@ -2072,13 +2135,16 @@ nav.scrolled {
     .portfolio-grid {
         grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     }
+
     .portfolio-item.wide {
         grid-column: span 1;
     }
+
     .story-masonry {
         display: flex;
         flex-direction: column;
     }
+
     .story-masonry div {
         height: 400px !important;
     }
@@ -2476,6 +2542,7 @@ nav.scrolled {
     .hero-reveal-wrap {
         grid-template-columns: 1fr;
     }
+
     .hero-text-side {
         padding: 60px 5vw;
         position: absolute;
@@ -2483,19 +2550,23 @@ nav.scrolled {
         left: 0;
         background: transparent;
     }
+
     .portfolio-hero-content h1 {
         font-size: 5rem;
     }
+
     .editorial-grid {
         display: flex;
         flex-direction: column;
         gap: 60px;
     }
+
     .editorial-item {
         width: 100% !important;
         height: 500px !important;
         margin: 0 !important;
     }
+
     .horizontal-film-card {
         flex: 0 0 80vw;
     }
@@ -2508,7 +2579,8 @@ nav.scrolled {
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 99999; /* Extremely high to cover pinned sections */
+    z-index: 99999;
+    /* Extremely high to cover pinned sections */
     display: none;
     align-items: center;
     justify-content: center;
@@ -2563,7 +2635,7 @@ nav.scrolled {
     background: #000;
     border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 50px 100px rgba(0,0,0,0.8);
+    box-shadow: 0 50px 100px rgba(0, 0, 0, 0.8);
 }
 
 #youtube-player {
@@ -2576,4 +2648,120 @@ nav.scrolled {
     height: 100%;
 }
 
-
+/* --- Experience Section (Radical Cinematic) --- */
+.experience-scrub-section {
+    height: 115vh;
+    background: #000;
+    position: relative;
+    overflow: hidden;
+}
+
+.experience-scrub-container {
+    height: 100vh;
+    width: 100%;
+    position: sticky;
+    top: 0;
+    overflow: hidden;
+}
+
+.experience-bg-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    /* Extra height for parallax */
+    object-fit: contain;
+    opacity: 0.6;
+    will-change: transform;
+}
+
+.cinematic-meta {
+    position: absolute;
+    z-index: 10;
+    font-family: var(--font-body);
+    font-size: 0.6rem;
+    color: var(--gold);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    padding: 30px;
+    opacity: 0.8;
+}
+
+.meta-top-left {
+    top: 0;
+    left: 0;
+}
+
+.meta-top-right {
+    top: 0;
+    right: 0;
+    text-align: right;
+}
+
+.meta-bottom-left {
+    bottom: 0;
+    left: 0;
+}
+
+.meta-bottom-right {
+    bottom: 0;
+    right: 0;
+    text-align: right;
+}
+
+.cinematic-meta span {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.experience-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    width: 100%;
+    z-index: 5;
+    padding: 0 20px;
+}
+
+.experience-overlay h2 {
+    font-size: clamp(3rem, 10vw, 8rem);
+    color: #fff;
+    margin: 20px 0;
+    text-transform: uppercase;
+    letter-spacing: -2px;
+    line-height: 0.9;
+}
+
+.typing-container {
+    height: 24px;
+    font-size: 1.2rem;
+    color: var(--gold);
+    font-family: var(--font-body);
+    letter-spacing: 3px;
+    margin-bottom: 40px;
+}
+
+.experience-scroll-hint {
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: rgba(255, 255, 255, 0.4);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.experience-scroll-hint::after {
+    content: '';
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, var(--gold), transparent);
+}

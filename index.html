@@ -183,42 +183,35 @@
         </div>
 
         <div class="films-track">
-            <!-- Film 1 -->
-            <a href="#" class="film-card fade-up">
-                <div class="film-thumb">
-                    <img src="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=800&auto=format&fit=crop"
-                        alt="The Royal Wedding">
-                    <div class="film-play"></div>
+            <div class="horizontal-film-track">
+                <!-- Film 1 -->
+                <div class="horizontal-film-card">
+                    <img src="https://res.cloudinary.com/dctaobwaj/image/upload/f_auto,q_auto/v1778569972/010_compressed_wnttav.webp"
+                        alt="Cinematography Shot" loading="lazy">
+                    <div class="film-card-overlay">
+                        <span>Film No. 01</span>
+                        <h3>Desert Solitude</h3>
+                    </div>
                 </div>
-                <div class="film-info">
-                    <p class="film-location">Udaipur, Rajasthan</p>
-                    <h3>The Royal Legacy</h3>
+                <!-- Film 2 -->
+                <div class="horizontal-film-card">
+                    <img src="https://res.cloudinary.com/dctaobwaj/image/upload/f_auto,q_auto/v1778569975/013_compressed_yjwy95.webp"
+                        alt="Cinematography Shot" loading="lazy">
+                    <div class="film-card-overlay">
+                        <span>Film No. 02</span>
+                        <h3>Monsoon Love</h3>
+                    </div>
                 </div>
-            </a>
-            <!-- Film 2 -->
-            <a href="#" class="film-card fade-up">
-                <div class="film-thumb">
-                    <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?q=80&w=800&auto=format&fit=crop"
-                        alt="Coastal Vows">
-                    <div class="film-play"></div>
+                <!-- Film 3 -->
+                <div class="horizontal-film-card">
+                    <img src="https://res.cloudinary.com/dctaobwaj/image/upload/f_auto,q_auto/v1778569971/008_compressed_cnipqa.webp"
+                        alt="Cinematography Shot" loading="lazy">
+                    <div class="film-card-overlay">
+                        <span>Film No. 03</span>
+                        <h3>Varanasi Shadows</h3>
+                    </div>
                 </div>
-                <div class="film-info">
-                    <p class="film-location">Goa, India</p>
-                    <h3>Coastal Symphony</h3>
-                </div>
-            </a>
-            <!-- Film 3 -->
-            <a href="#" class="film-card fade-up">
-                <div class="film-thumb">
-                    <img src="https://images.unsplash.com/photo-1522673607200-164883214cde?q=80&w=800&auto=format&fit=crop"
-                        alt="Mountain Love">
-                    <div class="film-play"></div>
-                </div>
-                <div class="film-info">
-                    <p class="film-location">Shimla, Himachal</p>
-                    <h3>Mist & Mountains</h3>
-                </div>
-            </a>
+            </div>
         </div>
     </section>
 
@@ -237,10 +230,23 @@
     <section id="stories" class="couple-story light-section">
         <div class="container">
             <div class="story-grid">
-                <div class="story-image fade-up">
-                    <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?q=80&w=800&auto=format&fit=crop"
-                        alt="Couple Story">
-                    <div class="story-image-overlay"></div>
+                <div class="story-masonry">
+                    <div class="story-img-1" data-parallax="0.1">
+                        <img src="https://res.cloudinary.com/dctaobwaj/image/upload/f_auto,q_auto/v1778569979/018_compressed_oiyxja.webp"
+                            alt="Wedding Story" loading="lazy">
+                    </div>
+                    <div class="story-img-2" data-parallax="-0.1">
+                        <img src="https://res.cloudinary.com/dctaobwaj/image/upload/f_auto,q_auto/v1778569978/017_compressed_oka7nj.webp"
+                            alt="Wedding Story" loading="lazy">
+                    </div>
+                    <div class="story-img-3" data-parallax="0.15">
+                        <img src="https://res.cloudinary.com/dctaobwaj/image/upload/f_auto,q_auto/v1778569977/016_compressed_hohql7.webp"
+                            alt="Wedding Story" loading="lazy">
+                    </div>
+                    <div class="story-img-4" data-parallax="-0.05">
+                        <img src="https://res.cloudinary.com/dctaobwaj/image/upload/f_auto,q_auto/v1778569977/015_compressed_wpyyob.webp"
+                            alt="Wedding Story" loading="lazy">
+                    </div>
                 </div>
                 <div class="story-text fade-up">
                     <p class="script-accent">Latest Story</p>
@@ -249,7 +255,6 @@
                         desert. A story of two souls finding their forever amidst the golden sands.</p>
                     <p class="story-quote">"They captured the parts of us that we didn't even know existed. Pure magic."
                     </p>
-                    <!-- <a href="#" class="btn btn-outline-dark">Read Full Story</a> -->
                 </div>
             </div>
         </div>
@@ -275,10 +280,7 @@
                 <span>UDIT LOG-C</span>
             </div>
 
-            <video id="experience-video" class="scrub-video" muted playsinline preload="auto">
-                <source src="https://videos.pexels.com/video-files/4011471/4011471-hd_1920_1080_30fps.mp4"
-                    type="video/mp4">
-            </video>
+            <img src="https://res.cloudinary.com/dctaobwaj/image/upload/f_auto,q_auto/v1778569973/011_compressed_gfl6ur.webp" alt="Experience Background" class="experience-bg-img" loading="lazy">
             <div class="experience-overlay">
                 <p class="script-accent fade-up" style="color: #fff;">The Experience</p>
                 <h2 class="fade-up">Cinematic Vision</h2>
@@ -286,7 +288,7 @@
                     <span id="typing-text"></span><span class="cursor">|</span>
                 </div>
                 <div class="experience-scroll-hint">
-                    <span>Scroll to scrub</span>
+                    <span>Scroll to explore</span>
                 </div>
             </div>
         </div>
@@ -304,52 +306,36 @@
             <div class="bento-grid">
                 <!-- Row 1 & 2 -->
                 <div class="bento-item bento-2x2" data-interval="3500">
-                    <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=800&auto=format&fit=crop"
-                        class="active">
-                    <img
-                        src="https://images.unsplash.com/photo-1606800052052-a08af7148866?q=80&w=800&auto=format&fit=crop">
-                    <img
-                        src="https://images.unsplash.com/photo-1543616991-75a2c12516bb?q=80&w=800&auto=format&fit=crop">
+                    <img src="https://res.cloudinary.com/dctaobwaj/image/upload/f_auto,q_auto/v1778569975/013_compressed_yjwy95.webp" class="active" loading="lazy">
+                    <img src="https://res.cloudinary.com/dctaobwaj/image/upload/f_auto,q_auto/v1778569971/008_compressed_cnipqa.webp" loading="lazy">
+                    <img src="https://res.cloudinary.com/dctaobwaj/image/upload/f_auto,q_auto/v1778569971/007_compressed_eh9had.webp" loading="lazy">
                 </div>
                 <div class="bento-item bento-1x2" data-interval="2800">
-                    <img src="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=600&auto=format&fit=crop"
-                        class="active">
-                    <img
-                        src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?q=80&w=600&auto=format&fit=crop">
-                    <img
-                        src="https://images.unsplash.com/photo-1522673607200-164883214cde?q=80&w=600&auto=format&fit=crop">
+                    <img src="https://res.cloudinary.com/dctaobwaj/image/upload/f_auto,q_auto/v1778569971/005_compressed_a1qd1i.webp" class="active" loading="lazy">
+                    <img src="https://res.cloudinary.com/dctaobwaj/image/upload/f_auto,q_auto/v1778569971/002_compressed_r8jdr0.webp" loading="lazy">
+                    <img src="https://res.cloudinary.com/dctaobwaj/image/upload/f_auto,q_auto/v1778569977/015_compressed_wpyyob.webp" loading="lazy">
                 </div>
                 <div class="bento-item bento-1x1" data-interval="4200">
-                    <img src="https://images.unsplash.com/photo-1583933017411-925d332288a4?q=80&w=500&auto=format&fit=crop"
-                        class="active">
-                    <img
-                        src="https://images.unsplash.com/photo-1519225495810-758b631f2fbb?q=80&w=500&auto=format&fit=crop">
+                    <img src="https://res.cloudinary.com/dctaobwaj/image/upload/f_auto,q_auto/v1778569977/016_compressed_hohql7.webp" class="active" loading="lazy">
+                    <img src="https://res.cloudinary.com/dctaobwaj/image/upload/f_auto,q_auto/v1778569978/017_compressed_oka7nj.webp" loading="lazy">
                 </div>
                 <div class="bento-item bento-1x1" data-interval="3100">
-                    <img src="https://images.unsplash.com/photo-1523438885200-e635ba2c371e?q=80&w=500&auto=format&fit=crop"
-                        class="active">
-                    <img
-                        src="https://images.unsplash.com/photo-1502633016831-75d0e408618e?q=80&w=500&auto=format&fit=crop">
+                    <img src="https://res.cloudinary.com/dctaobwaj/image/upload/f_auto,q_auto/v1778569970/001_compressed_hwgae3.webp" class="active" loading="lazy">
+                    <img src="https://res.cloudinary.com/dctaobwaj/image/upload/f_auto,q_auto/v1778569979/018_compressed_oiyxja.webp" loading="lazy">
                 </div>
 
                 <!-- Row 3 -->
                 <div class="bento-item bento-1x1" data-interval="3900">
-                    <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=500&auto=format&fit=crop"
-                        class="active">
-                    <img
-                        src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=500&auto=format&fit=crop">
+                    <img src="https://res.cloudinary.com/dctaobwaj/image/upload/f_auto,q_auto/v1778569970/004_compressed_qdaj2k.webp" class="active" loading="lazy">
+                    <img src="https://res.cloudinary.com/dctaobwaj/image/upload/f_auto,q_auto/v1778569974/012_compressed_f0h6n5.webp" loading="lazy">
                 </div>
                 <div class="bento-item bento-2x1" data-interval="2500">
-                    <img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?q=80&w=800&auto=format&fit=crop"
-                        class="active">
-                    <img
-                        src="https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?q=80&w=800&auto=format&fit=crop">
+                    <img src="https://res.cloudinary.com/dctaobwaj/image/upload/f_auto,q_auto/v1778569970/003_compressed_lbdcbc.webp" class="active" loading="lazy">
+                    <img src="https://res.cloudinary.com/dctaobwaj/image/upload/f_auto,q_auto/v1778569976/014_compressed_aridyi.webp" loading="lazy">
                 </div>
                 <div class="bento-item bento-1x1" data-interval="3300">
-                    <img src="https://images.unsplash.com/photo-1522673607200-164883214cde?q=80&w=500&auto=format&fit=crop"
-                        class="active">
-                    <img
-                        src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?q=80&w=500&auto=format&fit=crop">
+                    <img src="https://res.cloudinary.com/dctaobwaj/image/upload/f_auto,q_auto/v1778569971/006_compressed_vqb5xl.webp" class="active" loading="lazy">
+                    <img src="https://res.cloudinary.com/dctaobwaj/image/upload/f_auto,q_auto/v1778569972/010_compressed_wnttav.webp" loading="lazy">
                 </div>
             </div>
         </div>
@@ -367,8 +353,8 @@
     <!-- Immersive Testimonial -->
     <section class="testimonial-immersive">
         <div class="testimonial-bg">
-            <img src="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1400&auto=format&fit=crop"
-                alt="Wedding Background">
+            <img src="https://res.cloudinary.com/dctaobwaj/image/upload/f_auto,q_auto/v1778569973/011_compressed_gfl6ur.webp"
+                alt="Wedding Background" loading="lazy">
         </div>
         <div class="testimonial-overlay"></div>
         <div class="testimonial-content fade-up">
@@ -432,11 +418,11 @@
     </section>
 
     <!-- Enquiry Section -->
-    <section id="enquiry" class="enquiry-section light-section">
-        <div class="enquiry-grid">
-            <div class="enquiry-image fade-up">
-                <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=800&auto=format&fit=crop"
-                    alt="Enquiry Image">
+    <section class="editorial-hero">
+        <div class="hero-reveal-wrap">
+            <div class="hero-img-side">
+                <img src="https://res.cloudinary.com/dctaobwaj/image/upload/f_auto,q_auto/v1778569973/011_compressed_gfl6ur.webp"
+                    alt="Main Hero" fetchpriority="high">
             </div>
             <div class="enquiry-form-wrap fade-up">
                 <p class="script-accent">Contact Us</p>
@@ -502,9 +488,9 @@
                 <div class="footer-col">
                     <h4>The Studio</h4>
                     <address>
-                        Udit Photography Studio<br>
+                        Powayan Road, Near Swaran Palace<br>
                         Banda, Shahjahanpur<br>
-                        Uttar Pradesh, India<br><br>
+                        Uttar Pradesh - 242042<br><br>
                         [EMAIL_ADDRESS]<br>
                         +91 7860078969 <br>
                         +91 9336414677

@@ -1,3 +1,90 @@
+// --- PORTFOLIO DATA CONFIGURATION ---
+const portfolioData = [
+    {
+        id: 1,
+        category: 'wedding',
+        title: 'The Royal Legacy',
+        layout: 'item-portrait',
+        mainImage: 'https://res.cloudinary.com/dctaobwaj/image/upload/f_auto,q_auto/v1778569979/018_compressed_oiyxja.webp',
+        gallery: [
+            'https://res.cloudinary.com/dctaobwaj/image/upload/f_auto,q_auto/v1778569979/018_compressed_oiyxja.webp',
+            'https://res.cloudinary.com/dctaobwaj/image/upload/f_auto,q_auto/v1778569978/017_compressed_oka7nj.webp'
+        ],
+        metadata: 'ISO 100 | f/2.8 | 1/500',
+        location: 'Udaipur'
+    },
+    {
+        id: 2,
+        category: 'wedding',
+        title: 'Silk & Sand',
+        layout: 'item-large',
+        mainImage: 'https://res.cloudinary.com/dctaobwaj/image/upload/f_auto,q_auto/v1778569978/017_compressed_oka7nj.webp',
+        gallery: ['https://res.cloudinary.com/dctaobwaj/image/upload/f_auto,q_auto/v1778569978/017_compressed_oka7nj.webp'],
+        metadata: 'ISO 200 | f/4.0 | 1/1000',
+        location: 'Jodhpur'
+    },
+    {
+        id: 3,
+        category: 'cinematic',
+        title: 'Monsoon Love',
+        layout: 'item-square',
+        mainImage: 'https://res.cloudinary.com/dctaobwaj/image/upload/f_auto,q_auto/v1778569977/016_compressed_hohql7.webp',
+        gallery: ['https://res.cloudinary.com/dctaobwaj/image/upload/f_auto,q_auto/v1778569977/016_compressed_hohql7.webp'],
+        metadata: 'ISO 800 | f/1.8 | 1/250',
+        location: 'Kerala'
+    },
+    {
+        id: 4,
+        category: 'portrait',
+        title: 'The Golden Hour',
+        layout: 'item-portrait',
+        mainImage: 'https://res.cloudinary.com/dctaobwaj/image/upload/f_auto,q_auto/v1778569977/015_compressed_wpyyob.webp',
+        gallery: ['https://res.cloudinary.com/dctaobwaj/image/upload/f_auto,q_auto/v1778569977/015_compressed_wpyyob.webp'],
+        metadata: 'ISO 100 | f/1.4 | 1/8000',
+        location: 'Pushkar'
+    },
+    {
+        id: 5,
+        category: 'cinematic',
+        title: 'Urban Echoes',
+        layout: 'item-wide',
+        mainImage: 'https://res.cloudinary.com/dctaobwaj/image/upload/f_auto,q_auto/v1778569976/014_compressed_aridyi.webp',
+        gallery: ['https://res.cloudinary.com/dctaobwaj/image/upload/f_auto,q_auto/v1778569976/014_compressed_aridyi.webp'],
+        metadata: 'ISO 100 | f/1.8 | 1/2000',
+        location: 'Goa'
+    },
+    {
+        id: 6,
+        category: 'wedding',
+        title: 'The Eternal Vow',
+        layout: 'item-large',
+        mainImage: 'https://res.cloudinary.com/dctaobwaj/image/upload/f_auto,q_auto/v1778569975/013_compressed_yjwy95.webp',
+        gallery: ['https://res.cloudinary.com/dctaobwaj/image/upload/f_auto,q_auto/v1778569975/013_compressed_yjwy95.webp'],
+        metadata: 'ISO 400 | f/2.8 | 1/100',
+        location: 'Jaipur'
+    },
+    {
+        id: 7,
+        category: 'wedding',
+        title: 'Sacred Threads',
+        layout: 'item-portrait',
+        mainImage: 'https://res.cloudinary.com/dctaobwaj/image/upload/f_auto,q_auto/v1778569974/012_compressed_f0h6n5.webp',
+        gallery: ['https://res.cloudinary.com/dctaobwaj/image/upload/f_auto,q_auto/v1778569974/012_compressed_f0h6n5.webp'],
+        metadata: 'ISO 800 | f/1.4 | 1/500',
+        location: 'Varanasi'
+    },
+    {
+        id: 8,
+        category: 'wedding',
+        title: 'Highland Tales',
+        layout: 'item-wide',
+        mainImage: 'https://res.cloudinary.com/dctaobwaj/image/upload/f_auto,q_auto/v1778569972/010_compressed_wnttav.webp',
+        gallery: ['https://res.cloudinary.com/dctaobwaj/image/upload/f_auto,q_auto/v1778569972/010_compressed_wnttav.webp'],
+        metadata: 'ISO 100 | f/5.6 | 1/400',
+        location: 'Manali'
+    }
+];
+
 gsap.registerPlugin(ScrollTrigger);
 
 /* --- Lightbox Logic --- */
@@ -40,11 +127,20 @@ function initBentoGallery() {
 
             const startCycling = () => {
                 timer = setInterval(() => {
-                    images[currentIndex].classList.remove('active');
+                    const prevImg = images[currentIndex];
                     currentIndex = (currentIndex + 1) % images.length;
-                    images[currentIndex].classList.add('active');
+                    const nextImg = images[currentIndex];
+
+                    // Smooth GSAP Crossfade
+                    gsap.to(prevImg, { opacity: 0, duration: 1.5, ease: "power1.inOut" });
+                    gsap.to(nextImg, { opacity: 1, duration: 1.5, ease: "power1.inOut" });
+                    
+                    // Maintain active class for lightbox logic
+                    images.forEach(img => img.classList.remove('active'));
+                    nextImg.classList.add('active');
                 }, intervalTime);
             };
+
 
             const stopCycling = () => {
                 clearInterval(timer);
@@ -224,6 +320,8 @@ window.addEventListener('load', () => {
                 initBentoGallery();
                 initCustomCursor(); // Radical New
                 initEditorialAnimations(); // Radical New
+                renderEditorialGrid(); // DYNAMIC LOAD
+                initExperienceSection(); // Radical New
                 initPortfolio();
                 initVideoModal(); 
                 initHorizontalFilms(); // Radical New
@@ -232,6 +330,77 @@ window.addEventListener('load', () => {
             }
         });
 });
+
+/* --- Experience Section Logic --- */
+let typingTimeout; // Global to prevent multiple loops
+function initExperienceSection() {
+    // Parallax Background Image
+    gsap.to('.experience-bg-img', {
+        y: '20%',
+        ease: 'none',
+        scrollTrigger: {
+            trigger: '.experience-scrub-section',
+            start: 'top bottom',
+            end: 'bottom top',
+            scrub: true
+        }
+    });
+
+    // Word Flipper Animation (Replaced Typewriter)
+    const typingText = document.getElementById('typing-text');
+    if (typingText) {
+        const phrases = ['DIRECTING EMOTIONS', 'CRAFTING LEGACIES', 'UNSCRIPTED ARTISTRY'];
+        let phraseIndex = 0;
+
+        // Set initial state
+        typingText.textContent = phrases[0];
+        gsap.set(typingText, { opacity: 1, y: 0 });
+
+        function flipWord() {
+            gsap.to(typingText, {
+                opacity: 0,
+                y: -15,
+                duration: 0.6,
+                ease: "power2.in",
+                onComplete: () => {
+                    phraseIndex = (phraseIndex + 1) % phrases.length;
+                    typingText.textContent = phrases[phraseIndex];
+                    
+                    gsap.fromTo(typingText, 
+                        { opacity: 0, y: 15 },
+                        { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }
+                    );
+                }
+            });
+        }
+
+        // Start cycling
+        setInterval(flipWord, 4000);
+    }
+}
+
+
+
+
+
+/* --- Dynamic Portfolio Rendering --- */
+function renderEditorialGrid() {
+    const grid = document.querySelector('.editorial-grid');
+    if (!grid) return;
+
+    grid.innerHTML = portfolioData.map(item => `
+        <div class="editorial-item ${item.layout} fade-up" data-category="${item.category}" data-title="${item.title}" data-images="${item.gallery.join(',')}">
+            <div class="item-inner">
+                <img src="${item.mainImage}" alt="${item.title}">
+                <div class="item-meta">
+                    <span class="meta-data">${item.metadata}</span>
+                    <h3>${item.title}</h3>
+                    <span class="location">${item.location}</span>
+                </div>
+            </div>
+        </div>
+    `).join('');
+}
 
 /* --- Mobile Menu --- */
 const hamburger = document.querySelector('.hamburger');

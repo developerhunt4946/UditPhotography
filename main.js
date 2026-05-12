@@ -4,52 +4,49 @@ const portfolioData = [
         id: 1,
         category: 'wedding',
         title: 'The Royal Legacy',
-        layout: 'item-portrait',
-        mainImage: 'https://res.cloudinary.com/dctaobwaj/image/upload/f_auto,q_auto/v1778569979/018_compressed_oiyxja.webp',
-        gallery: [
-            'https://res.cloudinary.com/dctaobwaj/image/upload/f_auto,q_auto/v1778569979/018_compressed_oiyxja.webp',
-            'https://res.cloudinary.com/dctaobwaj/image/upload/f_auto,q_auto/v1778569978/017_compressed_oka7nj.webp'
-        ],
-        metadata: 'ISO 100 | f/2.8 | 1/500',
-        location: 'Udaipur'
+        layout: 'item-large',
+        mainImage: 'https://res.cloudinary.com/dctaobwaj/image/upload/f_auto,q_auto,w_1000/v1778569978/017_compressed_oka7nj.webp',
+        gallery: ['https://res.cloudinary.com/dctaobwaj/image/upload/f_auto,q_auto,w_1200/v1778569978/017_compressed_oka7nj.webp'],
+        metadata: 'ISO 100 | f/2.8 | 1/200',
+        location: 'Udaipur, Rajasthan'
     },
     {
         id: 2,
-        category: 'wedding',
-        title: 'Silk & Sand',
-        layout: 'item-large',
-        mainImage: 'https://res.cloudinary.com/dctaobwaj/image/upload/f_auto,q_auto/v1778569978/017_compressed_oka7nj.webp',
-        gallery: ['https://res.cloudinary.com/dctaobwaj/image/upload/f_auto,q_auto/v1778569978/017_compressed_oka7nj.webp'],
-        metadata: 'ISO 200 | f/4.0 | 1/1000',
-        location: 'Jodhpur'
+        category: 'portraits',
+        title: 'Grace in Motion',
+        layout: 'item-portrait',
+        mainImage: 'https://res.cloudinary.com/dctaobwaj/image/upload/f_auto,q_auto,w_1000/v1778569979/018_compressed_oiyxja.webp',
+        gallery: ['https://res.cloudinary.com/dctaobwaj/image/upload/f_auto,q_auto,w_1200/v1778569979/018_compressed_oiyxja.webp'],
+        metadata: 'ISO 400 | f/1.4 | 1/500',
+        location: 'Editorial'
     },
     {
         id: 3,
-        category: 'cinematic',
-        title: 'Monsoon Love',
+        category: 'wedding',
+        title: 'Mist & Mountains',
         layout: 'item-square',
-        mainImage: 'https://res.cloudinary.com/dctaobwaj/image/upload/f_auto,q_auto/v1778569977/016_compressed_hohql7.webp',
-        gallery: ['https://res.cloudinary.com/dctaobwaj/image/upload/f_auto,q_auto/v1778569977/016_compressed_hohql7.webp'],
-        metadata: 'ISO 800 | f/1.8 | 1/250',
-        location: 'Kerala'
+        mainImage: 'https://res.cloudinary.com/dctaobwaj/image/upload/f_auto,q_auto,w_1000/v1778569977/016_compressed_hohql7.webp',
+        gallery: ['https://res.cloudinary.com/dctaobwaj/image/upload/f_auto,q_auto,w_1200/v1778569977/016_compressed_hohql7.webp'],
+        metadata: 'ISO 200 | f/4.0 | 1/1000',
+        location: 'Ladakh'
     },
     {
         id: 4,
-        category: 'portrait',
-        title: 'The Golden Hour',
+        category: 'wedding',
+        title: 'Desert Symphony',
         layout: 'item-portrait',
-        mainImage: 'https://res.cloudinary.com/dctaobwaj/image/upload/f_auto,q_auto/v1778569977/015_compressed_wpyyob.webp',
-        gallery: ['https://res.cloudinary.com/dctaobwaj/image/upload/f_auto,q_auto/v1778569977/015_compressed_wpyyob.webp'],
-        metadata: 'ISO 100 | f/1.4 | 1/8000',
-        location: 'Pushkar'
+        mainImage: 'https://res.cloudinary.com/dctaobwaj/image/upload/f_auto,q_auto,w_1000/v1778569977/015_compressed_wpyyob.webp',
+        gallery: ['https://res.cloudinary.com/dctaobwaj/image/upload/f_auto,q_auto,w_1200/v1778569977/015_compressed_wpyyob.webp'],
+        metadata: 'ISO 100 | f/2.0 | 1/800',
+        location: 'Jaisalmer'
     },
     {
         id: 5,
-        category: 'cinematic',
-        title: 'Urban Echoes',
+        category: 'wedding',
+        title: 'Golden Hour',
         layout: 'item-wide',
-        mainImage: 'https://res.cloudinary.com/dctaobwaj/image/upload/f_auto,q_auto/v1778569976/014_compressed_aridyi.webp',
-        gallery: ['https://res.cloudinary.com/dctaobwaj/image/upload/f_auto,q_auto/v1778569976/014_compressed_aridyi.webp'],
+        mainImage: 'https://res.cloudinary.com/dctaobwaj/image/upload/f_auto,q_auto,w_1200/v1778569976/014_compressed_aridyi.webp',
+        gallery: ['https://res.cloudinary.com/dctaobwaj/image/upload/f_auto,q_auto,w_1200/v1778569976/014_compressed_aridyi.webp'],
         metadata: 'ISO 100 | f/1.8 | 1/2000',
         location: 'Goa'
     },
@@ -58,8 +55,8 @@ const portfolioData = [
         category: 'wedding',
         title: 'The Eternal Vow',
         layout: 'item-large',
-        mainImage: 'https://res.cloudinary.com/dctaobwaj/image/upload/f_auto,q_auto/v1778569975/013_compressed_yjwy95.webp',
-        gallery: ['https://res.cloudinary.com/dctaobwaj/image/upload/f_auto,q_auto/v1778569975/013_compressed_yjwy95.webp'],
+        mainImage: 'https://res.cloudinary.com/dctaobwaj/image/upload/f_auto,q_auto,w_1000/v1778569975/013_compressed_yjwy95.webp',
+        gallery: ['https://res.cloudinary.com/dctaobwaj/image/upload/f_auto,q_auto,w_1200/v1778569975/013_compressed_yjwy95.webp'],
         metadata: 'ISO 400 | f/2.8 | 1/100',
         location: 'Jaipur'
     },
@@ -68,8 +65,8 @@ const portfolioData = [
         category: 'wedding',
         title: 'Sacred Threads',
         layout: 'item-portrait',
-        mainImage: 'https://res.cloudinary.com/dctaobwaj/image/upload/f_auto,q_auto/v1778569974/012_compressed_f0h6n5.webp',
-        gallery: ['https://res.cloudinary.com/dctaobwaj/image/upload/f_auto,q_auto/v1778569974/012_compressed_f0h6n5.webp'],
+        mainImage: 'https://res.cloudinary.com/dctaobwaj/image/upload/f_auto,q_auto,w_1000/v1778569974/012_compressed_f0h6n5.webp',
+        gallery: ['https://res.cloudinary.com/dctaobwaj/image/upload/f_auto,q_auto,w_1200/v1778569974/012_compressed_f0h6n5.webp'],
         metadata: 'ISO 800 | f/1.4 | 1/500',
         location: 'Varanasi'
     },
@@ -78,8 +75,8 @@ const portfolioData = [
         category: 'wedding',
         title: 'Highland Tales',
         layout: 'item-wide',
-        mainImage: 'https://res.cloudinary.com/dctaobwaj/image/upload/f_auto,q_auto/v1778569972/010_compressed_wnttav.webp',
-        gallery: ['https://res.cloudinary.com/dctaobwaj/image/upload/f_auto,q_auto/v1778569972/010_compressed_wnttav.webp'],
+        mainImage: 'https://res.cloudinary.com/dctaobwaj/image/upload/f_auto,q_auto,w_1200/v1778569972/010_compressed_wnttav.webp',
+        gallery: ['https://res.cloudinary.com/dctaobwaj/image/upload/f_auto,q_auto,w_1200/v1778569972/010_compressed_wnttav.webp'],
         metadata: 'ISO 100 | f/5.6 | 1/400',
         location: 'Manali'
     }
@@ -391,7 +388,7 @@ function renderEditorialGrid() {
     grid.innerHTML = portfolioData.map(item => `
         <div class="editorial-item ${item.layout} fade-up" data-category="${item.category}" data-title="${item.title}" data-images="${item.gallery.join(',')}">
             <div class="item-inner">
-                <img src="${item.mainImage}" alt="${item.title}">
+                <img src="${item.mainImage}" alt="${item.title}" loading="lazy">
                 <div class="item-meta">
                     <span class="meta-data">${item.metadata}</span>
                     <h3>${item.title}</h3>

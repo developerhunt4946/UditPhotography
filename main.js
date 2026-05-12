@@ -222,8 +222,11 @@ window.addEventListener('load', () => {
             onComplete: () => {
                 initLightbox(); // New Global Init
                 initBentoGallery();
-                initHeroAnimations();
+                initCustomCursor(); // Radical New
+                initEditorialAnimations(); // Radical New
                 initPortfolio();
+                initVideoModal(); 
+                initHorizontalFilms(); // Radical New
                 initAllScrollTriggersSequentially();
                 setTimeout(() => ScrollTrigger.refresh(), 500);
             }
@@ -471,7 +474,20 @@ function initAllScrollTriggersSequentially() {
     document.querySelectorAll('.fade-up').forEach(el => {
         gsap.fromTo(el, { y: 40, opacity: 0 }, {
             y: 0, opacity: 1, duration: 1.2, ease: 'power2.out',
-            scrollTrigger: { trigger: el, start: 'top 85%' }
+            scrollTrigger: { trigger: el, start: 'top 90%' }
+        });
+    });
+
+    // Magnetic Buttons
+    document.querySelectorAll('.magnetic-btn').forEach(btn => {
+        btn.addEventListener('mousemove', (e) => {
+            const rect = btn.getBoundingClientRect();
+            const x = e.clientX - rect.left - rect.width / 2;
+            const y = e.clientY - rect.top - rect.height / 2;
+            gsap.to(btn, { x: x * 0.3, y: y * 0.3, duration: 0.3 });
+        });
+        btn.addEventListener('mouseleave', () => {
+            gsap.to(btn, { x: 0, y: 0, duration: 0.5, ease: 'elastic.out(1, 0.3)' });
         });
     });
 }
@@ -514,6 +530,156 @@ if (contactForm) {
                 btn.style = ""; 
                 btn.disabled = false;
             }, 3000);
+        });
+    });
+}
+/* --- Video Modal Logic --- */
+function initVideoModal() {
+    const videoModal = document.getElementById('video-modal');
+    const playerWrapper = document.getElementById('youtube-player');
+    const closeVideo = document.querySelector('.close-video');
+    const modalBackdrop = document.querySelector('.modal-backdrop');
+    const triggers = document.querySelectorAll('.film-trigger');
+
+    if (!videoModal || !playerWrapper) return;
+
+    const openVideo = (videoId) => {
+        playerWrapper.innerHTML = `<iframe src="https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+        videoModal.classList.add('active');
+        gsap.to(videoModal, { opacity: 1, duration: 0.5 });
+        document.body.style.overflow = 'hidden';
+    };
+
+    const closeVideoModal = (e) => {
+        if (e) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+        gsap.to(videoModal, { 
+            opacity: 0, 
+            duration: 0.3, 
+            onComplete: () => {
+                videoModal.classList.remove('active');
+                playerWrapper.innerHTML = ''; 
+                document.body.style.overflow = '';
+            } 
+        });
+    };
+
+    triggers.forEach(item => {
+        item.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            const videoId = item.getAttribute('data-video-id');
+            if (videoId) openVideo(videoId);
+        });
+    });
+
+    if (closeVideo) closeVideo.addEventListener('click', closeVideoModal);
+    if (modalBackdrop) modalBackdrop.addEventListener('click', closeVideoModal);
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && videoModal.classList.contains('active')) {
+            closeVideoModal();
+        }
+    });
+}
+
+/* --- Custom Cinematic Cursor --- */
+function initCustomCursor() {
+    const cursor = document.querySelector('.custom-cursor');
+    const dot = document.querySelector('.cursor-dot');
+    const circle = document.querySelector('.cursor-circle');
+    
+    if (!cursor) return;
+
+    let mouseX = 0, mouseY = 0;
+    let dotX = 0, dotY = 0;
+    let circleX = 0, circleY = 0;
+
+    window.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+    });
+
+    gsap.ticker.add(() => {
+        dotX += (mouseX - dotX) * 0.2;
+        dotY += (mouseY - dotY) * 0.2;
+        circleX += (mouseX - circleX) * 0.1;
+        circleY += (mouseY - circleY) * 0.1;
+
+        gsap.set(dot, { x: dotX, y: dotY });
+        gsap.set(circle, { x: circleX, y: circleY });
+    });
+
+    const interactive = document.querySelectorAll('a, button, .editorial-item, .horizontal-film-card, .play-btn');
+    interactive.forEach(el => {
+        el.addEventListener('mouseenter', () => cursor.classList.add('active'));
+        el.addEventListener('mouseleave', () => cursor.classList.remove('active'));
+    });
+}
+
+/* --- Editorial Animations --- */
+function initEditorialAnimations() {
+    // Split Reveal for Hero
+    const heroTl = gsap.timeline();
+    heroTl.from('.hero-img-side', { xPercent: -100, duration: 1.5, ease: 'expo.inOut' })
+          .from('.hero-text-side', { xPercent: 100, duration: 1.5, ease: 'expo.inOut' }, 0)
+          .from('.hero-img-side img', { scale: 1.5, duration: 2, ease: 'expo.out' }, 0.5);
+
+    // Character Reveal for Text
+    document.querySelectorAll('.char-reveal, .split-reveal').forEach(text => {
+        const content = text.innerText;
+        text.innerHTML = content.split('').map(char => `<span style="display:inline-block">${char === ' ' ? '&nbsp;' : char}</span>`).join('');
+        
+        gsap.from(text.querySelectorAll('span'), {
+            y: 100,
+            opacity: 0,
+            stagger: 0.02,
+            duration: 1,
+            ease: 'expo.out',
+            scrollTrigger: {
+                trigger: text,
+                start: 'top 90%'
+            }
+        });
+    });
+}
+
+/* --- Horizontal Films Section --- */
+function initHorizontalFilms() {
+    const section = document.querySelector('.horizontal-films-section');
+    const track = document.querySelector('.horizontal-track');
+    
+    if (!section || !track) return;
+
+    const mainAnim = gsap.to(track, {
+        x: () => -(track.scrollWidth - window.innerWidth + window.innerWidth * 0.2),
+        ease: 'none',
+        scrollTrigger: {
+            id: 'horizontalScrollTrigger',
+            trigger: section,
+            start: 'top top',
+            end: () => `+=${track.scrollWidth}`,
+            scrub: 1,
+            pin: true,
+            anticipatePin: 1,
+            invalidateOnRefresh: true
+        }
+    });
+
+    // Parallax effect for cards
+    document.querySelectorAll('.horizontal-film-card').forEach(card => {
+        gsap.to(card.querySelector('img'), {
+            x: 50,
+            ease: 'none',
+            scrollTrigger: {
+                trigger: card,
+                containerAnimation: mainAnim, 
+                start: 'left right',
+                end: 'right left',
+                scrub: true
+            }
         });
     });
 }

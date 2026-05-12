@@ -25,6 +25,14 @@
 
 <body class="dark-section">
 
+    <!-- Custom Cinematic Cursor -->
+    <div class="custom-cursor">
+        <div class="cursor-dot"></div>
+        <div class="cursor-circle">
+            <span class="cursor-text">VIEW</span>
+        </div>
+    </div>
+
     <!-- Film Grain Overlay -->
     <div class="grain-overlay"></div>
 
@@ -64,13 +72,22 @@
         </div>
     </nav>
 
-    <!-- Portfolio Hero -->
-    <section class="portfolio-hero">
-        <img src="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1600&auto=format&fit=crop" alt="Portfolio Hero">
-        <div class="portfolio-hero-content fade-up">
-            <p class="script-accent">The Collection</p>
-            <h1>Visual Anthology</h1>
-            <p class="kicker">A Decade of Crafting Love Stories</p>
+    <!-- Portfolio Hero: Immersive Reveal -->
+    <section class="portfolio-hero editorial-hero">
+        <div class="hero-reveal-wrap">
+            <div class="hero-img-side">
+                <img src="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1600&auto=format&fit=crop" alt="Portfolio Hero">
+            </div>
+            <div class="hero-text-side">
+                <div class="portfolio-hero-content">
+                    <p class="script-accent char-reveal">The Collection</p>
+                    <h1 class="split-reveal">Visual<br>Anthology</h1>
+                    <p class="kicker char-reveal">A Decade of Crafting Love Stories</p>
+                </div>
+            </div>
+        </div>
+        <div class="hero-scroll-indicator">
+            <div class="scroll-line"></div>
         </div>
     </section>
 
@@ -88,49 +105,124 @@
         </div>
     </div>
 
-    <!-- Main Portfolio Grid -->
-    <section class="portfolio-grid-section">
+    <!-- Main Portfolio: Editorial Asymmetric Grid -->
+    <section class="portfolio-grid-section editorial-grid-section">
         <div class="container">
-            <div class="portfolio-grid">
-                <!-- Wedding -->
-                <div class="portfolio-item tall" data-category="wedding" data-title="The Royal Legacy" data-images="https://images.unsplash.com/photo-1606800052052-a08af7148866?q=80&w=800,https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=800,https://images.unsplash.com/photo-1543616991-75a2c12516bb?q=80&w=800,https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=800">
-                    <img src="https://images.unsplash.com/photo-1606800052052-a08af7148866?q=80&w=800&auto=format&fit=crop" alt="Wedding">
-                    <div class="portfolio-overlay">
-                        <span>Udaipur, Rajasthan</span>
-                        <h3>The Royal Legacy</h3>
+            <div class="editorial-grid">
+                <!-- Item 1: Large Featured -->
+                <div class="editorial-item item-large fade-up" data-category="wedding" data-title="The Royal Legacy" data-images="https://images.unsplash.com/photo-1606800052052-a08af7148866?q=80&w=800,https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=800">
+                    <div class="item-inner">
+                        <img src="https://images.unsplash.com/photo-1606800052052-a08af7148866?q=80&w=800&auto=format&fit=crop" alt="Wedding">
+                        <div class="item-meta">
+                            <span class="meta-data">ISO 100 | f/2.8 | 1/200</span>
+                            <h3>The Royal Legacy</h3>
+                            <span class="location">Udaipur, Rajasthan</span>
+                        </div>
                     </div>
                 </div>
-                <!-- Pre-Wedding -->
-                <div class="portfolio-item wide" data-category="pre-wedding" data-title="Mist & Mountains" data-images="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=800,https://images.unsplash.com/photo-1522673607200-164883214cde?q=80&w=800,https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?q=80&w=800">
-                    <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=800&auto=format&fit=crop" alt="Pre-Wedding">
-                    <div class="portfolio-overlay">
-                        <span>Ladakh, India</span>
-                        <h3>Mist & Mountains</h3>
+
+                <!-- Item 2: Vertical Portrait -->
+                <div class="editorial-item item-portrait fade-up" data-category="portraits" data-title="Grace in Motion" data-images="https://images.unsplash.com/photo-1520854221256-17451cc331bf?q=80&w=800">
+                    <div class="item-inner">
+                        <img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?q=80&w=800&auto=format&fit=crop" alt="Portrait">
+                        <div class="item-meta">
+                            <span class="meta-data">ISO 400 | f/1.4 | 1/500</span>
+                            <h3>Grace in Motion</h3>
+                        </div>
                     </div>
                 </div>
-                <!-- Portrait -->
-                <div class="portfolio-item" data-category="portraits" data-title="Grace in Motion" data-images="https://images.unsplash.com/photo-1520854221256-17451cc331bf?q=80&w=800,https://images.unsplash.com/photo-1523438885200-e635ba2c371e?q=80&w=800">
-                    <img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?q=80&w=800&auto=format&fit=crop" alt="Portrait">
-                    <div class="portfolio-overlay">
-                        <span>Editorial</span>
-                        <h3>Grace in Motion</h3>
+
+                <!-- Item 3: Square Detail -->
+                <div class="editorial-item item-square fade-up" data-category="pre-wedding" data-title="Mist & Mountains" data-images="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=800">
+                    <div class="item-inner">
+                        <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=800&auto=format&fit=crop" alt="Pre-Wedding">
+                        <div class="item-meta">
+                            <span class="meta-data">ISO 200 | f/4.0 | 1/1000</span>
+                            <h3>Mist & Mountains</h3>
+                        </div>
                     </div>
                 </div>
-                <!-- Film -->
-                <div class="portfolio-item" data-category="films" data-title="Coastal Symphony" data-images="https://images.unsplash.com/photo-1519225495810-758b631f2fbb?q=80&w=800,https://images.unsplash.com/photo-1511795409834-ef04bbd61622?q=80&w=800">
-                    <img src="https://images.unsplash.com/photo-1519225495810-758b631f2fbb?q=80&w=800&auto=format&fit=crop" alt="Film">
-                    <div class="portfolio-overlay">
-                        <span>Cinematic Film</span>
-                        <h3>Coastal Symphony</h3>
+
+                <!-- Item 4: Wide Panoramic -->
+                <div class="editorial-item item-wide fade-up" data-category="films" data-title="Coastal Symphony" data-images="https://images.unsplash.com/photo-1519225495810-758b631f2fbb?q=80&w=800">
+                    <div class="item-inner">
+                        <img src="https://images.unsplash.com/photo-1519225495810-758b631f2fbb?q=80&w=800&auto=format&fit=crop" alt="Film">
+                        <div class="item-meta">
+                            <span class="meta-data">LOG-C | 24FPS | anamorphic</span>
+                            <h3>Coastal Symphony</h3>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- Hidden data for "See All" to ensure it shows the full catalog even with reduced grid items -->
+    </section>
+        <!-- Hidden data for "See All" -->
         <div class="hidden-portfolio-data" style="display: none;" 
              data-images="https://images.unsplash.com/photo-1543616991-75a2c12516bb?q=80&w=800,https://images.unsplash.com/photo-1606800052052-a08af7148866?q=80&w=800,https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?q=80&w=800,https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=800,https://images.unsplash.com/photo-1511795409834-ef04bbd61622?q=80&w=800,https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=800,https://images.unsplash.com/photo-1523438885200-e635ba2c371e?q=80&w=800,https://images.unsplash.com/photo-1520854221256-17451cc331bf?q=80&w=800">
         </div>
     </section>
+
+    <!-- Horizontal Films Showcase: Pinned Interaction -->
+    <section class="horizontal-films-section">
+        <div class="horizontal-scroll-container">
+            <div class="section-header-side">
+                <p class="script-accent">The Reel</p>
+                <h2>Cinematic<br>Stories</h2>
+            </div>
+            
+            <div class="horizontal-track">
+                <!-- Film 1 -->
+                <div class="horizontal-film-card film-trigger" data-video-id="dQw4w9WgXcQ">
+                    <div class="card-bg">
+                        <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=800" alt="Royal Wedding Film">
+                    </div>
+                    <div class="card-content">
+                        <span class="kicker">Wedding Film</span>
+                        <h3>Royal Legacy</h3>
+                        <div class="magnetic-btn play-btn">Play Film</div>
+                    </div>
+                </div>
+                
+                <!-- Film 2 -->
+                <div class="horizontal-film-card film-trigger" data-video-id="9bZkp7q19f0">
+                    <div class="card-bg">
+                        <img src="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=800" alt="Cinematic Story">
+                    </div>
+                    <div class="card-content">
+                        <span class="kicker">Cinematic Highlight</span>
+                        <h3>Ladakh Diaries</h3>
+                        <div class="magnetic-btn play-btn">Play Film</div>
+                    </div>
+                </div>
+
+                <!-- Film 3 -->
+                <div class="horizontal-film-card film-trigger" data-video-id="jNQXAC9IVRw">
+                    <div class="card-bg">
+                        <img src="https://images.unsplash.com/photo-1522673607200-164883214cde?q=80&w=800" alt="Travel Vlog">
+                    </div>
+                    <div class="card-content">
+                        <span class="kicker">Travel Film</span>
+                        <h3>Golden Sands</h3>
+                        <div class="magnetic-btn play-btn">Play Film</div>
+                    </div>
+                </div>
+                
+                <!-- Empty spacer for scroll end -->
+                <div class="horizontal-spacer"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Modal -->
+    <div id="video-modal" class="video-modal">
+        <div class="modal-backdrop"></div>
+        <div class="video-container">
+            <button class="close-video">&times;</button>
+            <div class="iframe-wrapper">
+                <div id="youtube-player"></div>
+            </div>
+        </div>
+    </div>
 
     <!-- Collection Modal -->
     <div id="collection-modal" class="collection-modal">

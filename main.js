@@ -508,21 +508,24 @@ function initAllScrollTriggersSequentially() {
             }
         }
 
-        if (section.classList.contains('marquee-section')) {
-            const marqueeContent = section.querySelector('.marquee-content');
-            if (marqueeContent) {
-                const firstSpan = marqueeContent.querySelector('span');
+        if (section.classList.contains('criss-cross-marquee')) {
+            const rows = section.querySelectorAll('.marquee-row');
+            rows.forEach((row, index) => {
+                const content = row.querySelector('.marquee-content');
+                const firstSpan = content.querySelector('span');
                 if (firstSpan) {
-                    for (let i = 0; i < 4; i++) marqueeContent.appendChild(firstSpan.cloneNode(true));
+                    for (let i = 0; i < 4; i++) {
+                        content.appendChild(firstSpan.cloneNode(true));
+                    }
                 }
-                const singleSetWidth = marqueeContent.scrollWidth / 2;
-                gsap.fromTo(marqueeContent, { x: 0 }, { x: -singleSetWidth, ease: 'none', duration: 30, repeat: -1 });
-                gsap.to(marqueeContent, {
-                    x: `-=${singleSetWidth * 0.3}`,
-                    ease: 'none',
-                    scrollTrigger: { trigger: section, start: 'top bottom', end: 'bottom top', scrub: 1 }
-                });
-            }
+                const singleSetWidth = content.scrollWidth / 2;
+                const direction = index % 2 === 0 ? -1 : 1;
+                
+                gsap.fromTo(content, 
+                    { x: direction === -1 ? 0 : -singleSetWidth }, 
+                    { x: direction === -1 ? -singleSetWidth : 0, ease: 'none', duration: 40, repeat: -1 }
+                );
+            });
         }
 
         if (section.id === 'stories') {
@@ -709,71 +712,57 @@ if (modalRange && modalValue) {
 // Contact Form Submission
 // =========================
 
-if (contactForm) {
+// Contact Form Submission (Multiple Forms)
+const bookingForms = document.querySelectorAll('.elegant-form');
 
-    contactForm.addEventListener('submit', (e) => {
-
+bookingForms.forEach(form => {
+    form.addEventListener('submit', (e) => {
         e.preventDefault();
 
-        const btn = contactForm.querySelector('.submit-btn');
-
+        const btn = form.querySelector('.submit-btn');
         const orig = btn.innerText;
 
         btn.innerText = "Sending...";
         btn.disabled = true;
 
-        const formData = new FormData(contactForm);
+        const formData = new FormData(form);
 
         fetch(scriptURL, {
             method: 'POST',
             body: formData,
             mode: 'no-cors'
         })
-
             .then(() => {
-
                 btn.innerText = "Thank you! We'll be in touch.";
-
                 btn.style.background = "transparent";
                 btn.style.color = "var(--gold)";
                 btn.style.border = "1px solid var(--gold)";
 
-                contactForm.reset();
+                form.reset();
 
                 setTimeout(() => {
-
                     btn.innerText = orig;
                     btn.style.background = "";
                     btn.style.color = "";
                     btn.style.border = "";
                     btn.disabled = false;
-
                 }, 5000);
-
             })
-
             .catch((error) => {
-
                 btn.innerText = "Oops! Try again.";
-
                 btn.style.background = "#ff3b30";
                 btn.style.color = "#fff";
 
                 setTimeout(() => {
-
                     btn.innerText = orig;
                     btn.style.background = "";
                     btn.style.color = "";
                     btn.style.border = "";
                     btn.disabled = false;
-
                 }, 3000);
-
             });
-
     });
-
-}
+});
 /* --- Video Modal Logic --- */
 function initVideoModal() {
     const videoModal = document.getElementById('video-modal');
@@ -870,8 +859,15 @@ function initEditorialAnimations() {
 
     // Character Reveal for Text
     document.querySelectorAll('.char-reveal, .split-reveal').forEach(text => {
-        const content = text.innerText;
-        text.innerHTML = content.split('').map(char => `<span style="display:inline-block">${char === ' ' ? '&nbsp;' : char}</span>`).join('');
+        const content = text.innerHTML;
+        // Split by HTML tags but keep the tags in the result
+        const parts = content.split(/(<[^>]*>)/g);
+        
+        text.innerHTML = parts.map(part => {
+            if (part.startsWith('<')) return part; // Return tags as is
+            // Only split the actual text content
+            return part.split('').map(char => `<span style="display:inline-block">${char === ' ' ? '&nbsp;' : char}</span>`).join('');
+        }).join('');
 
         gsap.from(text.querySelectorAll('span'), {
             y: 100,

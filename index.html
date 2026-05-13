@@ -100,10 +100,22 @@
             <div class="contact-modal-content">
                 <p class="script-accent">Contact Us</p>
                 <h2>Book Now</h2>
-                <form class="elegant-form">
+                <form id="modalContactForm" class="elegant-form">
                     <div class="form-group">
                         <label>Full Name</label>
                         <input type="text" name="Name" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Couple Name</label>
+                        <input type="text" name="CoupleName" placeholder="Partner's Name" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Event Dates</label>
+                        <input type="text" name="Date" placeholder="DD/MM/YYYY" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Bride & Groom Occupation</label>
+                        <input type="text" name="Occupation" placeholder="Your Professions">
                     </div>
                     <div class="form-group">
                         <label>Email Address</label>
@@ -114,16 +126,30 @@
                         <input type="tel" name="Phone" placeholder="+91..." required>
                     </div>
                     <div class="form-group">
-                        <label>Event Type</label>
-                        <select name="Events" required>
-                            <option value="Wedding">Wedding</option>
-                            <option value="Engagement">Engagement</option>
-                            <option value="Other">Other</option>
-                        </select>
+                        <label>Events Type (Select all that apply)</label>
+                        <div class="event-checkbox-grid">
+                            <label class="event-checkbox-item"><input type="checkbox" name="Events" value="Engagement"> Engagement</label>
+                            <label class="event-checkbox-item"><input type="checkbox" name="Events" value="Tilak"> Tilak</label>
+                            <label class="event-checkbox-item"><input type="checkbox" name="Events" value="Haldi"> Haldi</label>
+                            <label class="event-checkbox-item"><input type="checkbox" name="Events" value="Mehandi"> Mehandi</label>
+                            <label class="event-checkbox-item"><input type="checkbox" name="Events" value="Wedding"> Wedding</label>
+                            <label class="event-checkbox-item"><input type="checkbox" name="Events" value="Reception"> Reception</label>
+                            <label class="event-checkbox-item"><input type="checkbox" name="Events" value="Pre Wedding"> Pre Wedding</label>
+                            <label class="event-checkbox-item"><input type="checkbox" name="Events" value="Other"> Other</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Venue</label>
+                        <input type="text" name="Venue" placeholder="Event Location/Hotel">
                     </div>
                     <div class="form-group">
                         <label>Budget: <span class="budget-modal-val">₹50,000</span></label>
-                        <input type="range" min="50000" max="1000000" step="1000" value="50000" class="budget-slider budget-modal-range">
+                        <input type="range" name="Budget" min="50000" max="1000000" step="1000" value="50000"
+                            class="budget-slider budget-modal-range">
+                    </div>
+                    <div class="form-group">
+                        <label>Message (Optional)</label>
+                        <textarea name="Message" placeholder="Tell us more..."></textarea>
                     </div>
                     <button type="submit" class="btn btn-solid submit-btn">Book Now</button>
                 </form>
@@ -234,14 +260,18 @@
         </div>
     </section>
 
-    <!-- Marquee Text -->
-    <section class="marquee-section light-section">
-        <div class="marquee-content">
-            <span>CHASING LIGHT</span>
-            <span>CRAFTING STORIES</span>
-            <span>CINEMATIC MOMENTS</span>
-            <span>TIMELESS MEMORIES</span>
-            <span>THE UDIT LEGACY</span>
+    <!-- Criss-Cross Marquee -->
+    <section class="criss-cross-marquee light-section">
+        <div class="marquee-row marquee-left">
+            <div class="marquee-content">
+                <span>CHASING LIGHT • CRAFTING STORIES • CINEMATIC MOMENTS • TIMELESS MEMORIES • THE UDIT LEGACY •
+                </span>
+            </div>
+        </div>
+        <div class="marquee-row marquee-right">
+            <div class="marquee-content">
+                <span>VINTAGE SOUL • MODERN VISION • ETERNAL LOVE • ARTISTIC GRANDEUR • POETIC MOTION • </span>
+            </div>
         </div>
     </section>
 
@@ -250,13 +280,13 @@
         <div class="container">
             <div class="story-grid">
                 <div class="story-image fade-up">
-                    <img src="https://res.cloudinary.com/dctaobwaj/image/upload/f_auto,q_auto,w_1200/v1778569970/003_compressed_lbdcbc.webp"
+                    <img src="https://res.cloudinary.com/dctaobwaj/image/upload/f_auto,q_auto,w_1000/v1778569979/018_compressed_oiyxja.webp"
                         alt="Couple Story" loading="lazy">
                     <div class="story-image-overlay"></div>
                 </div>
                 <div class="story-text fade-up">
                     <p class="script-accent">Latest Story</p>
-                    <h2>Aman & Rhea</h2>
+                    <h2>Arpit & Nandini</h2>
                     <p>A celebration that transcended time, set against the breathtaking backdrop of the Jaisalmer
                         desert. A story of two souls finding their forever amidst the golden sands.</p>
                     <p class="story-quote">"They captured the parts of us that we didn't even know existed. Pure magic."
@@ -316,41 +346,54 @@
                 <div class="bento-item bento-2x2" data-interval="3500">
                     <img src="https://res.cloudinary.com/dctaobwaj/image/upload/f_auto,q_auto,w_1000/v1778569975/013_compressed_yjwy95.webp"
                         class="active" loading="lazy">
-                    <img src="https://res.cloudinary.com/dctaobwaj/image/upload/f_auto,q_auto,w_1000/v1778569971/008_compressed_cnipqa.webp" loading="lazy">
-                    <img src="https://res.cloudinary.com/dctaobwaj/image/upload/f_auto,q_auto,w_1000/v1778569971/007_compressed_eh9had.webp" loading="lazy">
+                    <img src="https://res.cloudinary.com/dctaobwaj/image/upload/f_auto,q_auto,w_1000/v1778569971/008_compressed_cnipqa.webp"
+                        loading="lazy">
+                    <img src="https://res.cloudinary.com/dctaobwaj/image/upload/f_auto,q_auto,w_600/v1778569977/016_compressed_hohql7.webp"
+                        class="active" loading="lazy">
+
                 </div>
                 <div class="bento-item bento-1x2" data-interval="2800">
                     <img src="https://res.cloudinary.com/dctaobwaj/image/upload/f_auto,q_auto,w_800/v1778569971/005_compressed_a1qd1i.webp"
                         class="active" loading="lazy">
-                    <img src="https://res.cloudinary.com/dctaobwaj/image/upload/f_auto,q_auto,w_800/v1778569971/002_compressed_r8jdr0.webp" loading="lazy">
-                    <img src="https://res.cloudinary.com/dctaobwaj/image/upload/f_auto,q_auto,w_800/v1778569977/015_compressed_wpyyob.webp" loading="lazy">
+                    <img src="https://res.cloudinary.com/dctaobwaj/image/upload/f_auto,q_auto,w_800/v1778569971/002_compressed_r8jdr0.webp"
+                        loading="lazy">
+                    <img src="https://res.cloudinary.com/dctaobwaj/image/upload/f_auto,q_auto,w_800/v1778569977/015_compressed_wpyyob.webp"
+                        loading="lazy">
+
+                    <img src="https://res.cloudinary.com/dctaobwaj/image/upload/f_auto,q_auto,w_1000/v1778569971/007_compressed_eh9had.webp"
+                        loading="lazy">
                 </div>
                 <div class="bento-item bento-1x1" data-interval="4200">
                     <img src="https://res.cloudinary.com/dctaobwaj/image/upload/f_auto,q_auto,w_600/v1778569977/016_compressed_hohql7.webp"
                         class="active" loading="lazy">
-                    <img src="https://res.cloudinary.com/dctaobwaj/image/upload/f_auto,q_auto,w_600/v1778569978/017_compressed_oka7nj.webp" loading="lazy">
+                    <img src="https://res.cloudinary.com/dctaobwaj/image/upload/f_auto,q_auto,w_600/v1778569978/017_compressed_oka7nj.webp"
+                        loading="lazy">
                 </div>
                 <div class="bento-item bento-1x1" data-interval="3100">
                     <img src="https://res.cloudinary.com/dctaobwaj/image/upload/f_auto,q_auto,w_600/v1778569970/001_compressed_hwgae3.webp"
                         class="active" loading="lazy">
-                    <img src="https://res.cloudinary.com/dctaobwaj/image/upload/f_auto,q_auto,w_600/v1778569979/018_compressed_oiyxja.webp" loading="lazy">
+                    <img src="https://res.cloudinary.com/dctaobwaj/image/upload/f_auto,q_auto,w_600/v1778569979/018_compressed_oiyxja.webp"
+                        loading="lazy">
                 </div>
 
                 <!-- Row 3 -->
                 <div class="bento-item bento-1x1" data-interval="3900">
                     <img src="https://res.cloudinary.com/dctaobwaj/image/upload/f_auto,q_auto,w_600/v1778569970/004_compressed_qdaj2k.webp"
                         class="active" loading="lazy">
-                    <img src="https://res.cloudinary.com/dctaobwaj/image/upload/f_auto,q_auto,w_600/v1778569974/012_compressed_f0h6n5.webp" loading="lazy">
+                    <img src="https://res.cloudinary.com/dctaobwaj/image/upload/f_auto,q_auto,w_600/v1778569974/012_compressed_f0h6n5.webp"
+                        loading="lazy">
                 </div>
                 <div class="bento-item bento-2x1" data-interval="2500">
-                    <img src="https://res.cloudinary.com/dctaobwaj/image/upload/f_auto,q_auto,w_1000/v1778569970/003_compressed_lbdcbc.webp"
+                    <img src="https://res.cloudinary.com/dctaobwaj/image/upload/f_auto,q_auto,w_1000/v1778657392/WhatsApp_Image_2026-05-13_at_11.50.03_t1ol9d.jpg"
                         class="active" loading="lazy">
-                    <img src="https://res.cloudinary.com/dctaobwaj/image/upload/f_auto,q_auto,w_1000/v1778569976/014_compressed_aridyi.webp" loading="lazy">
+                    <img src="https://res.cloudinary.com/dctaobwaj/image/upload/f_auto,q_auto,w_1000/v1778569976/014_compressed_aridyi.webp"
+                        loading="lazy">
                 </div>
                 <div class="bento-item bento-1x1" data-interval="3300">
                     <img src="https://res.cloudinary.com/dctaobwaj/image/upload/f_auto,q_auto,w_600/v1778569971/006_compressed_vqb5xl.webp"
                         class="active" loading="lazy">
-                    <img src="https://res.cloudinary.com/dctaobwaj/image/upload/f_auto,q_auto,w_600/v1778569972/010_compressed_wnttav.webp" loading="lazy">
+                    <img src="https://res.cloudinary.com/dctaobwaj/image/upload/f_auto,q_auto,w_600/v1778569972/010_compressed_wnttav.webp"
+                        loading="lazy">
                 </div>
             </div>
         </div>
@@ -479,29 +522,28 @@
                         <label>Address</label>
                         <input type="text" name="Address" placeholder="Your Current City/Address">
                     </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label>Events Type</label>
-                            <select name="Events" required>
-                                <option value="" disabled selected>Select Event</option>
-                                <option value="Engagement">Engagement</option>
-                                <option value="Tilak">Tilak</option>
-                                <option value="Haldi">Haldi</option>
-                                <option value="Mehandi">Mehandi</option>
-                                <option value="Wedding">Wedding</option>
-                                <option value="Riception">Reception</option>
-                                <option value="Pre Wedding">Pre Wedding</option>
-                                <option value="Other">Other:</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label>Venue</label>
-                            <input type="text" name="Venue" placeholder="Event Location/Hotel">
+                    <div class="form-group" style="margin-bottom: 25px;">
+                        <label>Events Type (Select all that apply)</label>
+                        <div class="event-checkbox-grid">
+                            <label class="event-checkbox-item"><input type="checkbox" name="Events" value="Engagement"> Engagement</label>
+                            <label class="event-checkbox-item"><input type="checkbox" name="Events" value="Tilak"> Tilak</label>
+                            <label class="event-checkbox-item"><input type="checkbox" name="Events" value="Haldi"> Haldi</label>
+                            <label class="event-checkbox-item"><input type="checkbox" name="Events" value="Mehandi"> Mehandi</label>
+                            <label class="event-checkbox-item"><input type="checkbox" name="Events" value="Wedding"> Wedding</label>
+                            <label class="event-checkbox-item"><input type="checkbox" name="Events" value="Reception"> Reception</label>
+                            <label class="event-checkbox-item"><input type="checkbox" name="Events" value="Pre Wedding"> Pre Wedding</label>
+                            <label class="event-checkbox-item"><input type="checkbox" name="Events" value="Other"> Other</label>
                         </div>
                     </div>
+                    <div class="form-group" style="margin-bottom: 25px;">
+                        <label>Venue</label>
+                        <input type="text" name="Venue" placeholder="Event Location/Hotel">
+                    </div>
                     <div class="form-group" style="margin-bottom: 35px;">
-                        <label>Estimated Budget: <span id="budget-value" style="color: var(--gold); font-weight: 600;">₹50,000</span></label>
-                        <input type="range" name="Budget" min="50000" max="1000000" step="1000" value="50000" class="budget-slider" id="budget-range">
+                        <label>Estimated Budget: <span id="budget-value"
+                                style="color: var(--gold); font-weight: 600;">₹50,000</span></label>
+                        <input type="range" name="Budget" min="50000" max="1000000" step="1000" value="50000"
+                            class="budget-slider" id="budget-range">
                         <div class="range-labels">
                             <span>₹50K</span>
                             <span>₹10L</span>

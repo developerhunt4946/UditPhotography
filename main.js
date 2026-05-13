@@ -131,7 +131,7 @@ function initBentoGallery() {
                     // Smooth GSAP Crossfade
                     gsap.to(prevImg, { opacity: 0, duration: 1.5, ease: "power1.inOut" });
                     gsap.to(nextImg, { opacity: 1, duration: 1.5, ease: "power1.inOut" });
-                    
+
                     // Maintain active class for lightbox logic
                     images.forEach(img => img.classList.remove('active'));
                     nextImg.classList.add('active');
@@ -172,7 +172,7 @@ function initPortfolio() {
     const modalCategory = document.getElementById('modal-category');
     const closeModal = document.querySelector('.close-modal');
     const seeAllBtn = document.getElementById('see-all-photos');
-    
+
     const lightbox = document.getElementById('bento-lightbox');
     const lightboxImg = document.getElementById('lightbox-img');
 
@@ -202,7 +202,7 @@ function initPortfolio() {
         modalTitle.innerText = title;
         modalCategory.innerText = category;
         modalGrid.innerHTML = '';
-        
+
         images.forEach(imgSrc => {
             const div = document.createElement('div');
             div.className = 'modal-grid-item';
@@ -234,13 +234,13 @@ function initPortfolio() {
     if (seeAllBtn) {
         seeAllBtn.addEventListener('click', () => {
             let allImages = [];
-            
+
             // Collect from visible items
             portfolioItems.forEach(item => {
                 const imgs = item.getAttribute('data-images');
                 if (imgs) allImages = allImages.concat(imgs.split(','));
             });
-            
+
             // Collect from hidden data
             const hiddenData = document.querySelector('.hidden-portfolio-data');
             if (hiddenData) {
@@ -274,36 +274,36 @@ window.addEventListener('load', () => {
     const tl = gsap.timeline();
 
     tl.to('.loader-content', { opacity: 1, duration: 0.5 })
-        .to('.loader-logo', { 
-            y: 0, 
-            opacity: 1, 
-            scale: 1, 
-            duration: 1.8, 
-            ease: 'expo.out' 
+        .to('.loader-logo', {
+            y: 0,
+            opacity: 1,
+            scale: 1,
+            duration: 1.8,
+            ease: 'expo.out'
         }, 'reveal')
-        .to('.loader-title', { 
-            y: 0, 
-            opacity: 1, 
-            duration: 1.6, 
-            ease: 'expo.out' 
+        .to('.loader-title', {
+            y: 0,
+            opacity: 1,
+            duration: 1.6,
+            ease: 'expo.out'
         }, 'reveal+=0.3')
-        .to('.loader-subtitle', { 
-            y: 0, 
-            opacity: 1, 
-            duration: 1.6, 
-            ease: 'expo.out' 
+        .to('.loader-subtitle', {
+            y: 0,
+            opacity: 1,
+            duration: 1.6,
+            ease: 'expo.out'
         }, 'reveal+=0.6')
-        .to('.loader-line', { 
-            scaleX: 1, 
-            duration: 2, 
-            ease: 'power4.inOut' 
+        .to('.loader-line', {
+            scaleX: 1,
+            duration: 2,
+            ease: 'power4.inOut'
         }, 'reveal+=0.4')
-        .to('.loader-content', { 
-            y: -30, 
-            opacity: 0, 
-            duration: 1.2, 
-            delay: 1.8, 
-            ease: 'power4.inOut' 
+        .to('.loader-content', {
+            y: -30,
+            opacity: 0,
+            duration: 1.2,
+            delay: 1.8,
+            ease: 'power4.inOut'
         })
         .to('#loader', {
             yPercent: -100,
@@ -320,7 +320,7 @@ window.addEventListener('load', () => {
                 renderEditorialGrid(); // DYNAMIC LOAD
                 initExperienceSection(); // Radical New
                 initPortfolio();
-                initVideoModal(); 
+                initVideoModal();
                 initHorizontalFilms(); // Radical New
                 initAllScrollTriggersSequentially();
                 setTimeout(() => ScrollTrigger.refresh(), 500);
@@ -362,8 +362,8 @@ function initExperienceSection() {
                 onComplete: () => {
                     phraseIndex = (phraseIndex + 1) % phrases.length;
                     typingText.textContent = phrases[phraseIndex];
-                    
-                    gsap.fromTo(typingText, 
+
+                    gsap.fromTo(typingText,
                         { opacity: 0, y: 15 },
                         { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }
                     );
@@ -579,16 +579,16 @@ function initAllScrollTriggersSequentially() {
 
             if (scrubVideo) {
                 const scrubTl = gsap.timeline({
-                    scrollTrigger: { 
-                        trigger: section, 
-                        start: "top bottom", 
-                        end: "bottom top", 
-                        scrub: 1 
+                    scrollTrigger: {
+                        trigger: section,
+                        start: "top bottom",
+                        end: "bottom top",
+                        scrub: 1
                     }
                 });
                 const addVideoTween = () => {
                     scrubTl.fromTo(scrubVideo, { currentTime: 0 }, { currentTime: scrubVideo.duration || 1, ease: "none" });
-                    
+
                     const scrollHint = section.querySelector('.experience-scroll-hint');
                     if (scrollHint) {
                         scrubTl.to(scrollHint, { opacity: 0, y: 20, duration: 0.2 }, 0);
@@ -659,45 +659,134 @@ function initAllScrollTriggersSequentially() {
 }
 
 /* --- Form Submission (Google Sheets Integration) --- */
-const scriptURL = 'YOUR_GOOGLE_SCRIPT_URL_HERE'; // Replace with your Google Apps Script URL
+// Replace with your actual Google Apps Script Web App URL
+const scriptURL = 'https://script.google.com/macros/s/AKfycbywGaY3RDH_4YzjJIq77HyiNzZSOdMX_deCAI2fYqI0iudsfAc3G9ojvlKLwcTPLP4/exec';
+
 const contactForm = document.getElementById('contactForm');
 
+
+// =========================
+// Budget Slider Logic
+// =========================
+
+const budgetRange = document.getElementById('budget-range');
+const budgetValue = document.getElementById('budget-value');
+
+if (budgetRange && budgetValue) {
+
+    budgetRange.addEventListener('input', (e) => {
+
+        const val = parseInt(e.target.value);
+
+        budgetValue.innerText = `₹${val.toLocaleString('en-IN')}`;
+
+    });
+
+}
+
+
+// =========================
+// Modal Budget Logic
+// =========================
+
+const modalRange = document.querySelector('.budget-modal-range');
+const modalValue = document.querySelector('.budget-modal-val');
+
+if (modalRange && modalValue) {
+
+    modalRange.addEventListener('input', (e) => {
+
+        const val = parseInt(e.target.value);
+
+        modalValue.innerText = `₹${val.toLocaleString('en-IN')}`;
+
+    });
+
+}
+
+
+// =========================
+// Contact Form Submission
+// =========================
+
 if (contactForm) {
+
     contactForm.addEventListener('submit', (e) => {
+
         e.preventDefault();
+
+        console.log("Form submission started...");
+        console.log("Script URL:", scriptURL);
+
         const btn = contactForm.querySelector('.submit-btn');
+
         const orig = btn.innerText;
+
         btn.innerText = "Sending...";
         btn.disabled = true;
 
-        fetch(scriptURL, { 
-            method: 'POST', 
-            body: new FormData(contactForm)
+        const formData = new FormData(contactForm);
+
+        // Debugging form values
+        for (let [key, value] of formData.entries()) {
+
+            console.log(`Field: ${key}, Value: ${value}`);
+
+        }
+
+        fetch(scriptURL, {
+            method: 'POST',
+            body: formData,
+            mode: 'no-cors'
         })
-        .then(response => {
-            btn.innerText = "Thank you! We'll be in touch.";
-            btn.style.background = "transparent"; 
-            btn.style.color = "var(--gold)"; 
-            btn.style.border = "1px solid var(--gold)";
-            contactForm.reset();
-            setTimeout(() => { 
-                btn.innerText = orig; 
-                btn.style = ""; 
-                btn.disabled = false;
-            }, 5000);
-        })
-        .catch(error => {
-            console.error('Error!', error.message);
-            btn.innerText = "Oops! Try again.";
-            btn.style.background = "#ff3b30";
-            btn.style.color = "#fff";
-            setTimeout(() => { 
-                btn.innerText = orig; 
-                btn.style = ""; 
-                btn.disabled = false;
-            }, 3000);
-        });
+
+            .then(() => {
+
+                console.log("Form submitted successfully");
+
+                btn.innerText = "Thank you! We'll be in touch.";
+
+                btn.style.background = "transparent";
+                btn.style.color = "var(--gold)";
+                btn.style.border = "1px solid var(--gold)";
+
+                contactForm.reset();
+
+                setTimeout(() => {
+
+                    btn.innerText = orig;
+                    btn.style.background = "";
+                    btn.style.color = "";
+                    btn.style.border = "";
+                    btn.disabled = false;
+
+                }, 5000);
+
+            })
+
+            .catch((error) => {
+
+                console.error("Submission Error:", error);
+
+                btn.innerText = "Oops! Try again.";
+
+                btn.style.background = "#ff3b30";
+                btn.style.color = "#fff";
+
+                setTimeout(() => {
+
+                    btn.innerText = orig;
+                    btn.style.background = "";
+                    btn.style.color = "";
+                    btn.style.border = "";
+                    btn.disabled = false;
+
+                }, 3000);
+
+            });
+
     });
+
 }
 /* --- Video Modal Logic --- */
 function initVideoModal() {
@@ -721,14 +810,14 @@ function initVideoModal() {
             e.preventDefault();
             e.stopPropagation();
         }
-        gsap.to(videoModal, { 
-            opacity: 0, 
-            duration: 0.3, 
+        gsap.to(videoModal, {
+            opacity: 0,
+            duration: 0.3,
             onComplete: () => {
                 videoModal.classList.remove('active');
-                playerWrapper.innerHTML = ''; 
+                playerWrapper.innerHTML = '';
                 document.body.style.overflow = '';
-            } 
+            }
         });
     };
 
@@ -756,7 +845,7 @@ function initCustomCursor() {
     const cursor = document.querySelector('.custom-cursor');
     const dot = document.querySelector('.cursor-dot');
     const circle = document.querySelector('.cursor-circle');
-    
+
     if (!cursor) return;
 
     let mouseX = 0, mouseY = 0;
@@ -790,14 +879,14 @@ function initEditorialAnimations() {
     // Split Reveal for Hero
     const heroTl = gsap.timeline();
     heroTl.from('.hero-img-side', { xPercent: -100, duration: 1.5, ease: 'expo.inOut' })
-          .from('.hero-text-side', { xPercent: 100, duration: 1.5, ease: 'expo.inOut' }, 0)
-          .from('.hero-img-side img', { scale: 1.5, duration: 2, ease: 'expo.out' }, 0.5);
+        .from('.hero-text-side', { xPercent: 100, duration: 1.5, ease: 'expo.inOut' }, 0)
+        .from('.hero-img-side img', { scale: 1.5, duration: 2, ease: 'expo.out' }, 0.5);
 
     // Character Reveal for Text
     document.querySelectorAll('.char-reveal, .split-reveal').forEach(text => {
         const content = text.innerText;
         text.innerHTML = content.split('').map(char => `<span style="display:inline-block">${char === ' ' ? '&nbsp;' : char}</span>`).join('');
-        
+
         gsap.from(text.querySelectorAll('span'), {
             y: 100,
             opacity: 0,
@@ -816,7 +905,7 @@ function initEditorialAnimations() {
 function initHorizontalFilms() {
     const section = document.querySelector('.horizontal-films-section');
     const track = document.querySelector('.horizontal-track');
-    
+
     if (!section || !track) return;
 
     const mainAnim = gsap.to(track, {
@@ -841,7 +930,7 @@ function initHorizontalFilms() {
             ease: 'none',
             scrollTrigger: {
                 trigger: card,
-                containerAnimation: mainAnim, 
+                containerAnimation: mainAnim,
                 start: 'left right',
                 end: 'right left',
                 scrub: true

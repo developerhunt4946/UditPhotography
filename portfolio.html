@@ -47,28 +47,119 @@
     </div>
 
     <!-- Navigation -->
+    <!-- Navigation -->
     <nav id="navbar">
         <div class="nav-container">
+            <!-- Mobile Toggle -->
             <div class="hamburger">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5"
-                    stroke-linecap="round" stroke-linejoin="round">
-                    <line x1="3" y1="12" x2="21" y2="12"></line>
-                    <line x1="3" y1="6" x2="21" y2="6"></line>
-                    <line x1="3" y1="18" x2="21" y2="18"></line>
-                </svg>
+                <span></span>
+                <span></span>
+                <span></span>
             </div>
+
+            <!-- Desktop Left Links -->
             <ul class="nav-links nav-left">
                 <li><a href="index.html#why">About</a></li>
                 <li><a href="index.html#films">Films</a></li>
             </ul>
+
+            <!-- Centered Logo -->
             <a href="index.html" class="logo">
                 <img src="assets/blackbglogo.png" alt="Udit Photography Logo">
             </a>
+
+            <!-- Desktop Right Links -->
             <ul class="nav-links nav-right">
                 <li><a href="index.html#stories">Stories</a></li>
                 <li><a href="portfolio.html" class="active">Portfolio</a></li>
                 <li class="nav-btn-wrap"><a href="index.html#enquiry" class="btn btn-outline btn-nav">Book Now</a></li>
             </ul>
+
+            <!-- Mobile Contact Icon -->
+            <div class="nav-right-mobile">
+                <a href="index.html#enquiry" class="btn-mobile-contact">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                        <polyline points="22,6 12,13 2,6"></polyline>
+                    </svg>
+                </a>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Overlay -->
+        <div class="mobile-menu-overlay">
+            <div class="mobile-menu-inner">
+                <ul class="mobile-links">
+                    <li><a href="index.html#home">Home</a></li>
+                    <li><a href="index.html#why">About</a></li>
+                    <li><a href="index.html#films">Films</a></li>
+                    <li><a href="index.html#stories">Stories</a></li>
+                    <li><a href="portfolio.html" class="active">Portfolio</a></li>
+                    <li><a href="index.html#enquiry">Book Now</a></li>
+                </ul>
+            </div>
+        </div>
+        <!-- Mobile Contact Modal -->
+        <div class="contact-modal">
+            <div class="contact-modal-close">&times;</div>
+            <div class="contact-modal-content">
+                <p class="script-accent">Contact Us</p>
+                <h2>Book Now</h2>
+                <form id="modalContactForm" class="elegant-form">
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        <input type="text" name="Name" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Couple Name</label>
+                        <input type="text" name="CoupleName" placeholder="Partner's Name" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Event Dates</label>
+                        <input type="text" name="Date" placeholder="DD/MM/YYYY" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Bride & Groom Occupation</label>
+                        <input type="text" name="Occupation" placeholder="Your Professions">
+                    </div>
+                    <div class="form-group">
+                        <label>Email Address</label>
+                        <input type="email" name="Email" placeholder="email@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Phone Number</label>
+                        <input type="tel" name="Phone" placeholder="+91..." required>
+                    </div>
+                    <div class="form-group">
+                        <label>Events Type (Select all that apply)</label>
+                        <div class="event-checkbox-grid">
+                            <label class="event-checkbox-item"><input type="checkbox" name="Events" value="Engagement"> Engagement</label>
+                            <label class="event-checkbox-item"><input type="checkbox" name="Events" value="Tilak"> Tilak</label>
+                            <label class="event-checkbox-item"><input type="checkbox" name="Events" value="Haldi"> Haldi</label>
+                            <label class="event-checkbox-item"><input type="checkbox" name="Events" value="Mehandi"> Mehandi</label>
+                            <label class="event-checkbox-item"><input type="checkbox" name="Events" value="Wedding"> Wedding</label>
+                            <label class="event-checkbox-item"><input type="checkbox" name="Events" value="Reception"> Reception</label>
+                            <label class="event-checkbox-item"><input type="checkbox" name="Events" value="Pre Wedding"> Pre Wedding</label>
+                            <label class="event-checkbox-item"><input type="checkbox" name="Events" value="Other"> Other</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Venue</label>
+                        <input type="text" name="Venue" placeholder="Event Location/Hotel">
+                    </div>
+                    <div class="form-group">
+                        <label>Budget: <span class="budget-modal-val">₹50,000</span></label>
+                        <input type="range" name="Budget" min="50000" max="1000000" step="1000" value="50000"
+                            class="budget-slider budget-modal-range">
+                    </div>
+                    <div class="form-group">
+                        <label>Message (Optional)</label>
+                        <textarea name="Message" placeholder="Tell us more..."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-solid submit-btn">Book Now</button>
+                </form>
+            </div>
         </div>
     </nav>
 
@@ -242,11 +333,11 @@
         </div>
     </section>
 
-    <!-- Cinematic Footer -->
-    <footer class="footer-cinematic">
+    <!-- Footer -->
+    <footer>
         <div class="container">
             <div class="footer-grid">
-                <div class="footer-brand">
+                <div class="footer-col footer-brand">
                     <img src="assets/blackbglogo.png" alt="Udit Photography Logo"
                         style="height: 50px; width: auto; margin-bottom: 20px; filter: brightness(1.2);" class="logo">
                     <p>India's premier cinematic wedding photography and filmmaking studio. Crafting timeless visual

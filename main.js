@@ -715,9 +715,6 @@ if (contactForm) {
 
         e.preventDefault();
 
-        console.log("Form submission started...");
-        console.log("Script URL:", scriptURL);
-
         const btn = contactForm.querySelector('.submit-btn');
 
         const orig = btn.innerText;
@@ -727,13 +724,6 @@ if (contactForm) {
 
         const formData = new FormData(contactForm);
 
-        // Debugging form values
-        for (let [key, value] of formData.entries()) {
-
-            console.log(`Field: ${key}, Value: ${value}`);
-
-        }
-
         fetch(scriptURL, {
             method: 'POST',
             body: formData,
@@ -741,8 +731,6 @@ if (contactForm) {
         })
 
             .then(() => {
-
-                console.log("Form submitted successfully");
 
                 btn.innerText = "Thank you! We'll be in touch.";
 
@@ -765,8 +753,6 @@ if (contactForm) {
             })
 
             .catch((error) => {
-
-                console.error("Submission Error:", error);
 
                 btn.innerText = "Oops! Try again.";
 

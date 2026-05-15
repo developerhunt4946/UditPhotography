@@ -430,10 +430,12 @@ if (hamburger && mobileMenu) {
             hamburger.classList.remove('active');
             mobileMenu.classList.remove('active');
             contactModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
         });
 
         contactModalClose.addEventListener('click', () => {
             contactModal.classList.remove('active');
+            document.body.style.overflow = '';
         });
     }
 }

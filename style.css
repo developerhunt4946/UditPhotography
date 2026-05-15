@@ -497,11 +497,11 @@ nav.scrolled {
     width: 100%;
     height: 100%;
     background: #0a0a0a;
-    /* Solid black for safety */
     z-index: 9999;
-    /* Super high z-index */
     display: block;
     overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
     transform: translateY(100%);
     opacity: 0;
     visibility: hidden;
@@ -3000,4 +3000,51 @@ nav.scrolled {
     width: 1px;
     height: 40px;
     background: linear-gradient(to bottom, var(--gold), transparent);
+}
+
+/* --- Experience Section: Mobile Fix --- */
+@media (max-width: 768px) {
+    .experience-scrub-section {
+        height: 70vh;
+    }
+
+    .experience-scrub-container {
+        height: 70vh;
+    }
+
+    .experience-bg-img {
+        height: 70vh;
+        object-fit: cover;
+        opacity: 0.5;
+    }
+
+    /* Hide cinematic metadata on mobile — too cluttery */
+    .cinematic-meta {
+        display: none;
+    }
+
+    /* Tighten viewfinder borders */
+    .experience-scrub-container::before,
+    .experience-scrub-container::after {
+        top: 15px;
+        bottom: 15px;
+        left: 15px;
+        right: 15px;
+    }
+
+    .experience-overlay h2 {
+        font-size: clamp(1.8rem, 8vw, 3rem);
+        letter-spacing: -1px;
+        margin: 10px 0;
+    }
+
+    .typing-container {
+        font-size: 0.8rem;
+        letter-spacing: 2px;
+        margin-bottom: 20px;
+    }
+
+    .experience-scroll-hint {
+        bottom: 20px;
+    }
 }

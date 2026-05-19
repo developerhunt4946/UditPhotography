@@ -273,43 +273,42 @@ function initPortfolio() {
 window.addEventListener('load', () => {
     const tl = gsap.timeline();
 
-    tl.to('.loader-content', { opacity: 1, duration: 0.5 })
+    tl.to('.loader-content', { opacity: 1, duration: 0.45 })
         .to('.loader-logo', {
             y: 0,
             opacity: 1,
             scale: 1,
-            duration: 1.8,
+            duration: 0.9,
             ease: 'expo.out'
         }, 'reveal')
         .to('.loader-title', {
             y: 0,
             opacity: 1,
-            duration: 1.6,
+            duration: 0.9,
             ease: 'expo.out'
-        }, 'reveal+=0.3')
+        }, 'reveal+=0.15')
         .to('.loader-subtitle', {
             y: 0,
             opacity: 1,
-            duration: 1.6,
+            duration: 0.9,
             ease: 'expo.out'
-        }, 'reveal+=0.6')
+        }, 'reveal+=0.3')
         .to('.loader-line', {
             scaleX: 1,
-            duration: 2,
-            ease: 'power4.inOut'
-        }, 'reveal+=0.4')
-        .to('.loader-content', {
-            y: -30,
-            opacity: 0,
             duration: 1.2,
-            delay: 1.8,
             ease: 'power4.inOut'
-        })
+        }, 'reveal+=0.15')
+        .to('.loader-content', {
+            y: -20,
+            opacity: 0,
+            duration: 0.6,
+            ease: 'power4.inOut'
+        }, 'reveal+=1.2')
         .to('#loader', {
             yPercent: -100,
-            duration: 1.8,
+            duration: 0.75,
             ease: 'expo.inOut'
-        }, '-=0.8')
+        }, 'reveal+=1.8')
         .set('#loader', {
             display: 'none',
             onComplete: () => {
@@ -510,24 +509,115 @@ function initAllScrollTriggersSequentially() {
             }
         }
 
-        if (section.classList.contains('criss-cross-marquee')) {
-            const rows = section.querySelectorAll('.marquee-row');
-            rows.forEach((row, index) => {
-                const content = row.querySelector('.marquee-content');
+        if (section.classList.contains('single-marquee')) {
+            const track = section.querySelector('.marquee-track');
+            const content = section.querySelector('.marquee-content');
+            if (track && content) {
                 const firstSpan = content.querySelector('span');
                 if (firstSpan) {
-                    for (let i = 0; i < 4; i++) {
-                        content.appendChild(firstSpan.cloneNode(true));
-                    }
+                    // Clone once to ensure a seamless looping line of text
+                    const clone = firstSpan.cloneNode(true);
+                    content.appendChild(clone);
+
+                    let firstSpanWidth = firstSpan.offsetWidth;
+                    let animation;
+
+                    const createMarqueeTween = () => {
+                        return gsap.fromTo(content,
+                            { x: 0 },
+                            {
+                                x: -firstSpanWidth,
+                                ease: 'none',
+                                duration: 30,
+                                repeat: -1
+                            }
+                        );
+                    };
+
+                    animation = createMarqueeTween();
+
+                    // Recalculate track width on resize to ensure perfect responsiveness
+                    const updateWidth = () => {
+                        const currentTimeScale = animation.timeScale();
+                        animation.kill();
+                        firstSpanWidth = firstSpan.offsetWidth;
+                        animation = createMarqueeTween().timeScale(currentTimeScale);
+                    };
+                    window.addEventListener('resize', updateWidth);
+
+                    // Smooth organic deceleration to 0 speed on hover
+                    track.addEventListener('mouseenter', () => {
+                        gsap.to(animation, { timeScale: 0, duration: 0.5, ease: 'power2.out' });
+                    });
+                    
+                    // Smooth organic acceleration back to full speed on mouse leave
+                    track.addEventListener('mouseleave', () => {
+                        gsap.to(animation, { timeScale: 1, duration: 0.5, ease: 'power2.out' });
+                    });
                 }
-                const singleSetWidth = content.scrollWidth / 2;
-                const direction = index % 2 === 0 ? -1 : 1;
-                
-                gsap.fromTo(content, 
-                    { x: direction === -1 ? 0 : -singleSetWidth }, 
-                    { x: direction === -1 ? -singleSetWidth : 0, ease: 'none', duration: 40, repeat: -1 }
-                );
-            });
+            }
+        }
+
+        if (section.classList.contains('reviews-section')) {
+            const track = section.querySelector('.reviews-marquee-track');
+            const content = section.querySelector('.reviews-marquee-content');
+            if (track && content) {
+                const originalCards = Array.from(content.children);
+                // Duplicate cards twice to ensure seamless infinite looping on wider displays
+                originalCards.forEach(card => {
+                    const clone = card.cloneNode(true);
+                    content.appendChild(clone);
+                });
+                originalCards.forEach(card => {
+                    const clone = card.cloneNode(true);
+                    content.appendChild(clone);
+                });
+
+                // Calculate width of one complete set of cards
+                const getSingleSetWidth = () => {
+                    let totalWidth = 0;
+                    originalCards.forEach(card => {
+                        totalWidth += card.offsetWidth + parseInt(window.getComputedStyle(card).marginRight);
+                    });
+                    return totalWidth;
+                };
+
+                let setWidth = getSingleSetWidth();
+                let animation;
+
+                const createTween = () => {
+                    return gsap.fromTo(content,
+                        { x: 0 },
+                        {
+                            x: -setWidth,
+                            ease: 'none',
+                            duration: 45, // Slow, premium speed so text remains highly readable
+                            repeat: -1
+                        }
+                    );
+                };
+
+                animation = createTween();
+
+                // Responsive recalculation on resize
+                const handleResize = () => {
+                    const currentTimeScale = animation.timeScale();
+                    animation.kill();
+                    setWidth = getSingleSetWidth();
+                    animation = createTween().timeScale(currentTimeScale);
+                };
+                window.addEventListener('resize', handleResize);
+
+                // Premium smooth deceleration on hover to allow comfortable reading
+                track.addEventListener('mouseenter', () => {
+                    gsap.to(animation, { timeScale: 0, duration: 0.8, ease: 'power2.out' });
+                });
+
+                // Premium smooth acceleration back on mouse leave
+                track.addEventListener('mouseleave', () => {
+                    gsap.to(animation, { timeScale: 1, duration: 0.8, ease: 'power2.out' });
+                });
+            }
         }
 
         if (section.id === 'stories') {

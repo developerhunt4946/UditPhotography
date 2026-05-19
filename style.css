@@ -931,67 +931,48 @@ nav.scrolled {
     }
 }
 
-/* Criss-Cross Marquee */
-.criss-cross-marquee {
+/* Single Marquee */
+.single-marquee {
     position: relative;
-    padding: 100px 0;
-    background: var(--cream);
+    padding: 40px 0;
+    background: transparent;
     overflow: hidden;
     display: flex;
-    flex-direction: column;
+    align-items: center;
     justify-content: center;
-    gap: 20px;
 }
 
-.marquee-row {
-    width: 120%;
-    margin-left: -10%;
+.marquee-track {
+    width: 100%;
     white-space: nowrap;
     overflow: hidden;
-    padding: 20px 0;
-}
-
-.marquee-left {
-    background: var(--charcoal);
-    transform: rotate(-3deg);
-    z-index: 2;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-}
-
-.marquee-right {
-    background: var(--gold);
-    transform: rotate(3deg);
-    z-index: 1;
-    margin-top: -60px;
-    /* Overlap */
+    background: transparent;
+    padding: 24px 0;
+    display: flex;
+    align-items: center;
 }
 
 .marquee-content {
-    display: inline-block;
+    display: flex;
+    flex-direction: row;
+    white-space: nowrap;
+    will-change: transform;
 }
 
 .marquee-content span {
     font-family: var(--font-heading);
-    font-size: clamp(2rem, 5vw, 4rem);
+    font-size: clamp(1.8rem, 4vw, 3.2rem);
     text-transform: uppercase;
     font-weight: 800;
     letter-spacing: 2px;
-    padding: 0 20px;
-}
-
-.marquee-left .marquee-content span {
-    color: var(--white);
-    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.2);
-}
-
-.marquee-right .marquee-content span {
+    padding: 0 30px;
     color: var(--charcoal);
-    -webkit-text-stroke: 1px rgba(0, 0, 0, 0.1);
+    -webkit-text-stroke: 1px rgba(10, 10, 10, 0.15);
 }
 
 /* Couple Story (LIGHT) */
 .couple-story {
-    padding: 140px 0;
+    padding: 40px 0;
     background: var(--cream);
 }
 
@@ -1051,7 +1032,7 @@ nav.scrolled {
 
 @media(max-width:900px) {
     .couple-story {
-        padding: 80px 0;
+        padding: 10px 0;
     }
 
     .story-grid {
@@ -3046,5 +3027,105 @@ nav.scrolled {
 
     .experience-scroll-hint {
         bottom: 20px;
+    }
+}
+
+/* === REVIEWS MARQUEE === */
+.reviews-section {
+    padding: 80px 0;
+    background: var(--cream);
+    overflow: hidden;
+}
+
+.reviews-marquee-track {
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    margin-top: 50px;
+    display: flex;
+    align-items: center;
+}
+
+.reviews-marquee-content {
+    display: flex;
+    flex-direction: row;
+    white-space: nowrap;
+    will-change: transform;
+}
+
+.review-card {
+    flex: 0 0 380px;
+    width: 380px;
+    background: rgba(255, 255, 255, 0.4);
+    border: 1px solid var(--border-light);
+    border-radius: 12px;
+    padding: 40px 30px;
+    margin-right: 30px;
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: space-between;
+    white-space: normal; /* Allow text wrapping within cards */
+    transition: var(--transition);
+}
+
+.review-card:hover {
+    border-color: var(--gold-dim);
+    background: rgba(255, 255, 255, 0.85);
+    box-shadow: 0 15px 40px rgba(154, 123, 79, 0.05);
+    transform: translateY(-5px);
+}
+
+.review-stars {
+    color: var(--gold);
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+    display: block;
+}
+
+.review-text {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: #444;
+    margin-bottom: 25px;
+    font-style: italic;
+}
+
+.review-author {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    border-top: 1px solid rgba(154, 123, 79, 0.15);
+    padding-top: 20px;
+}
+
+.author-name {
+    font-family: var(--font-heading);
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--charcoal);
+}
+
+.author-location {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--gold);
+    font-weight: 500;
+}
+
+/* Responsive adjustment for Reviews Section */
+@media (max-width: 768px) {
+    .reviews-section {
+        padding: 40px 0;
+    }
+    .reviews-marquee-track {
+        margin-top: 30px;
+    }
+    .review-card {
+        flex: 0 0 300px;
+        width: 300px;
+        padding: 30px 20px;
+        margin-right: 20px;
     }
 }
